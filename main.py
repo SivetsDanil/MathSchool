@@ -1,0 +1,45 @@
+# НУЖНО УСТАНОВИТЬ requirements.txt командой 'pip install -r requirements.txt'
+from flask_login import LoginManager, login_required, logout_user
+from flask import render_template, redirect
+from api import indexAPI
+from flask import Flask, request, jsonify
+from flask_login import current_user
+import hashlib
+import time
+
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = "Secret"
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+class User:
+    def __init__(self, id):
+        self.id = id
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(id=1)
+
+
+def main():
+    app.register_blueprint(indexAPI.blueprint)
+    app.run(port=3000, host='127.0.0.1', debug=True)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,337 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen flex flex-col">
+
+  <!-- Навбар -->
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-10xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div class="text-3xl font-bold text-gray-900">Smart school</div>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Курсы</a>
+        <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">О нас</a>
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
+          Войти
+        </a>
+      </nav>
+      <!-- Мобильное меню (пока скрыто) -->
+      <button class="md:hidden text-gray-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="flex-grow">
+
+    <!-- Hero-секция -->
+    <section class="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-8xl font-extrabold text-gray-900 leading-tight mb-2">
+          Smart school
+        </h1>
+        <h1 class="text-4xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-10">
+          онлайн школа нового поколения.
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+          Забудь все, что ты зубрил в школе - мы научим тебя понимать это.
+        </p>
+        <div>
+          <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200">
+            Начать бесплатно
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Наши преимущества</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Карточка 1 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" ...></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Индивидуальный подход</h3>
+        <p class="text-gray-600">Каждому ученику — персональный план обучения и поддержка куратора.</p>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-green-600" ...></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Живые вебинары</h3>
+        <p class="text-gray-600">Прямые эфиры с преподавателями 2 раза в неделю + запись.</p>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="text-center">
+        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-purple-600" ...></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Проверка домашек</h3>
+        <p class="text-gray-600">Все задания проверяются вручную с подробным фидбэком.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="py-12 px-4 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Что мы предлагаем</h2>
+
+    <!-- Сетка: 1 колонка на мобильных, 3 — на десктопах -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Блок 1 -->
+      <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Индивидуальный план</h3>
+        <p class="text-gray-600">
+          Каждый ученик получает персональную траекторию обучения с учётом его целей и уровня.
+        </p>
+      </div>
+
+      <!-- Блок 2 -->
+      <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Живые вебинары</h3>
+        <p class="text-gray-600">
+          Прямые эфиры 2 раза в неделю: можно задавать вопросы в реальном времени.
+        </p>
+      </div>
+
+      <!-- Блок 3 -->
+      <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Проверка домашек</h3>
+        <p class="text-gray-600">
+          Все задания проверяются преподавателем с подробным фидбэком.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <section class="py-12 px-4 bg-white">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Как проходит обучение</h2>
+
+    <div class="space-y-8">
+      <!-- Элемент 1 -->
+      <div class="flex">
+        <div class="flex-shrink-0 mr-4">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+            <span class="text-blue-700 font-bold">1</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">Диагностика</h3>
+          <p class="text-gray-600 mt-1">
+            Определяем текущий уровень и цели ученика.
+          </p>
+        </div>
+      </div>
+
+      <!-- Элемент 2 -->
+      <div class="flex">
+        <div class="flex-shrink-0 mr-4">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+            <span class="text-blue-700 font-bold">2</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">Персональный план</h3>
+          <p class="text-gray-600 mt-1">
+            Составляем индивидуальную программу обучения.
+          </p>
+        </div>
+      </div>
+
+      <!-- Элемент 3 -->
+      <div class="flex">
+        <div class="flex-shrink-0 mr-4">
+          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+            <span class="text-blue-700 font-bold">3</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">Регулярные занятия</h3>
+          <p class="text-gray-600 mt-1">
+            Вебинары, домашки, проверка и обратная связь.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- О нас / Почему мы -->
+<section class="py-14 px-4 bg-gray-50">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Заголовок -->
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+      Почему выбирают Smart School?
+    </h2>
+
+    <!-- Блок 1: О школе -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-gray-900 mb-3">Первая онлайн-школа в Иркутске</h3>
+      <p class="text-gray-700 leading-relaxed">
+        Наша школа не только поможет вам сдать ГИА на высокие баллы, но и подтянуть школьную программу.
+        Именно мы — молодые специалисты — найдём самый креативный подход к каждому ученику,
+        и вы начнёте не просто учить, а <span class="font-medium text-gray-900">понимать сам предмет</span>.
+      </p>
+    </div>
+
+    <!-- Блок 2: Методика -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-gray-900 mb-3">Собственная методика обучения</h3>
+      <p class="text-gray-700 leading-relaxed">
+        Наши преподаватели подготовили авторские методики, которые помогают:
+      </p>
+      <ul class="mt-3 space-y-2 pl-5 list-disc text-gray-700">
+        <li>Глубоко понимать предмет</li>
+        <li>Уверенно сдавать ГИА на высокие баллы</li>
+        <li>Применять знания на протяжении всей жизни</li>
+      </ul>
+      <p class="mt-3 text-gray-700">
+        Подготовка включает как теоретический материал, так и практические задания
+        с индивидуальным закреплением.
+      </p>
+    </div>
+
+    <!-- Блок 3: Статистика -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Наши результаты</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-5 rounded-lg shadow-sm text-center border border-gray-100">
+          <div class="text-2xl font-bold text-blue-600">300+</div>
+          <div class="text-gray-700 mt-1">учеников<br>подготовлено к ЕГЭ</div>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow-sm text-center border border-gray-100">
+          <div class="text-2xl font-bold text-green-600">400+</div>
+          <div class="text-gray-700 mt-1">учеников<br>подготовлено к ОГЭ</div>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow-sm text-center border border-gray-100">
+          <div class="text-2xl font-bold text-purple-600">500+</div>
+          <div class="text-gray-700 mt-1">учеников<br>улучшили знания по школьной программе</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок 4: Форматы обучения -->
+    <div>
+      <h3 class="text-xl font-bold text-gray-900 mb-3">Форматы обучения</h3>
+      <p class="text-gray-700 leading-relaxed">
+        Обучение проходит в <span class="font-medium">онлайн-формате</span>.
+        А для тех, кто предпочитает очные занятия, у нас есть отличное предложение:
+        мы являемся партнёрами <span class="font-medium">Иркутского филиала МГТУ ГА</span>,
+        где проводятся очные курсы по подготовке к ОГЭ и ЕГЭ.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Карусель -->
+<section class="py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div
+      x-data="{
+        active: 0,
+        total: 3,
+        interval: null,
+        next() {
+          this.active = (this.active + 1) % this.total;
+        },
+        prev() {
+          this.active = (this.active - 1 + this.total) % this.total;
+        },
+        startAuto() {
+          this.interval = setInterval(() => this.next(), 2000);
+        },
+        stopAuto() {
+          clearInterval(this.interval);
+        }
+      }"
+      x-init="startAuto()"
+      @mouseenter="stopAuto()"
+      @mouseleave="startAuto()"
+      class="relative"
+    >
+      <!-- Слайды -->
+      <div class="overflow-hidden rounded-2xl shadow-md">
+        <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${active * 100}%)`">
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel1.png') }}"
+              alt="Курс по алгебре"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel2.png') }}"
+              alt="Курс по геометрии"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel3.png') }}"
+              alt="Олимпиадная математика"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Стрелки -->
+      <button
+        @click="prev()"
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+        aria-label="Предыдущий слайд"
+      >
+        &lt;
+      </button>
+      <button
+        @click="next()"
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+        aria-label="Следующий слайд"
+      >
+        &gt;
+      </button>
+
+      <!-- Индикаторы -->
+      <div class="flex justify-center mt-5 space-x-2">
+        <template x-for="i in total" :key="i">
+          <button
+            @click="active = i"
+            class="w-2.5 h-2.5 rounded-full transition-colors"
+            :class="active === i-1 ? 'bg-blue-600' : 'bg-gray-300'"
+          ></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <!-- Футер -->
+  <footer class="bg-gray-50 border-t border-gray-100 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center text-gray-600 text-sm">
+      © 2026 Математическая школа. Все права защищены.
+    </div>
+  </footer>
+
+</div>
+{% endblock %}
