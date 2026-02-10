@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
+
+/* Содержимое components.css */
+@layer components {
+  .text-body {
+    @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+  }
+
+  .heading-block {
+    @apply text-xl font-bold text-gray-900 dark:text-white mb-3;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-center text-gray-900 dark:text-white mb-10;
+  }
+
+  .feature-card {
+    @apply p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .btn-primary {
+    @apply inline-block bg-blue-600 dark:bg-blue-800 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+  }
+  .bg-cards{
+  @apply bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
+  }
+}
+
 @tailwind utilities;

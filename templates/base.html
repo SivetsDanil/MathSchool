@@ -7,7 +7,11 @@
     <title>{% block title %}Онлайн-школа{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
-<body>
+<body class="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- кнопка переключения (опционально) -->
+  <button onclick="document.documentElement.classList.toggle('dark')">
+    🌓 Переключить тему
+  </button>
     {% block content %}{% endblock %}
 
     <!-- Alpine.js для интерактивности -->
