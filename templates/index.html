@@ -2,16 +2,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="min-h-screen flex flex-col">
+<div class="flex flex-col">
 
   <!-- Навбар -->
-  <header class="font1 shadow-xl">
-    <div class="max-w-10xl mx-auto px-6 py-3 flex justify-between items-center">
-      <div class="text-3xl font-bold base-text">Smart school</div>
+  <header class="font1 shadow-navbar dark:shadow-navbar sticky top-0 z-50">
+    <div class="max-w-10xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-4xl font-bold base-text">Smart school</div>
+      <button onclick="document.documentElement.classList.toggle('dark')">
+    🌓 Переключить тему
+      </button>
       <nav class="hidden md:flex items-center space-x-6">
         <a href="#" class="text-link">Курсы</a>
         <a href="#" class="text-link">О нас</a>
-        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition-colors">
+        <a href="#" class="btn-navbar px-5 py-2">
           Войти
         </a>
       </nav>
@@ -27,16 +30,18 @@
   <!-- Основной контент -->
   <main class="flex-grow">
 
+
+
     <!-- Hero-секция -->
-    <section class="py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-8xl font-extrabold base-text leading-tight mb-2">
+    <section class="min-h-[83vh] flex items-center">
+      <div class="max-w-10xl mx-auto text-center mb-16">
+        <h1 class="text-[4rem] md:text-[12rem] font-extrabold base-text leading-tight -mb-6">
           Smart school
         </h1>
-        <h1 class="text-4xl md:text-4xl font-extrabold base-text leading-tight mb-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold base-text leading-tight mb-12">
           онлайн школа нового поколения.
         </h1>
-        <p class="text-lg text-body max-w-2xl mx-auto mb-10">
+        <p class="text-lg text-body max-w-2xl mx-auto mb-8">
           Забудь все, что ты зубрил в школе - мы научим тебя понимать это.
         </p>
         <div>
@@ -46,6 +51,75 @@
         </div>
       </div>
     </section>
+
+    <section class="py-14 px-4">
+  <div class="max-w-[80vw] mx-auto">
+
+    <!-- Заголовок -->
+    <h2 class="text-3xl md:text-5xl font-bold text-center base-text mb-36">
+      Почему выбирают Smart School?
+    </h2>
+
+    <!-- Блок 1: О школе -->
+    <div class="mb-12">
+      <h3 class="heading-block">Первая онлайн-школа в Иркутске</h3>
+      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+        Наша школа не только поможет вам сдать ГИА на высокие баллы, но и подтянуть школьную программу.
+        Именно мы — молодые специалисты — найдём самый креативный подход к каждому ученику,
+        и вы начнёте не просто учить, а <span class="font-medium text-gray-900 dark:text-gray-400">понимать сам предмет</span>.
+      </p>
+    </div>
+
+    <!-- Блок 2: Методика -->
+    <div class="mb-12">
+      <h3 class="heading-block">Собственная методика обучения</h3>
+      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+        Наши преподаватели подготовили авторские методики, которые помогают:
+      </p>
+      <ul class="mt-3 space-y-2 pl-5 list-disc text-gray-700 dark:text-gray-400">
+        <li>Глубоко понимать предмет</li>
+        <li>Уверенно сдавать ГИА на высокие баллы</li>
+        <li>Применять знания на протяжении всей жизни</li>
+      </ul>
+      <p class="mt-3 text-gray-700 dark:text-gray-400">
+        Подготовка включает как теоретический материал, так и практические задания
+        с индивидуальным закреплением.
+      </p>
+    </div>
+
+    <!-- Блок 3: Статистика -->
+    <div class="mb-12">
+      <h3 class="heading-block">Наши результаты</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-cards">
+          <div class="text-2xl font-bold text-blue-600">300+</div>
+          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ЕГЭ</div>
+        </div>
+        <div class="bg-cards">
+          <div class="text-2xl font-bold text-green-600">400+</div>
+          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ОГЭ</div>
+        </div>
+        <div class="bg-cards">
+          <div class="text-2xl font-bold text-purple-600">500+</div>
+          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>улучшили знания по школьной программе</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок 4: Форматы обучения -->
+    <div>
+      <h3 class="heading-block">Форматы обучения</h3>
+      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+        Обучение проходит в <span class="font-medium">онлайн-формате</span>.
+        А для тех, кто предпочитает очные занятия, у нас есть отличное предложение:
+        мы являемся партнёрами <span class="font-medium">Иркутского филиала МГТУ ГА</span>,
+        где проводятся очные курсы по подготовке к ОГЭ и ЕГЭ.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
     <section class="py-12 px-4 font-main2">
   <div class="max-w-6xl mx-auto">
@@ -173,76 +247,9 @@
 
 
     <!-- О нас / Почему мы -->
-<section class="py-14 px-4">
-  <div class="max-w-4xl mx-auto">
-
-    <!-- Заголовок -->
-    <h2 class="text-3xl md:text-4xl font-bold text-center base-text mb-12">
-      Почему выбирают Smart School?
-    </h2>
-
-    <!-- Блок 1: О школе -->
-    <div class="mb-12">
-      <h3 class="heading-block">Первая онлайн-школа в Иркутске</h3>
-      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
-        Наша школа не только поможет вам сдать ГИА на высокие баллы, но и подтянуть школьную программу.
-        Именно мы — молодые специалисты — найдём самый креативный подход к каждому ученику,
-        и вы начнёте не просто учить, а <span class="font-medium text-gray-900 dark:text-gray-400">понимать сам предмет</span>.
-      </p>
-    </div>
-
-    <!-- Блок 2: Методика -->
-    <div class="mb-12">
-      <h3 class="heading-block">Собственная методика обучения</h3>
-      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
-        Наши преподаватели подготовили авторские методики, которые помогают:
-      </p>
-      <ul class="mt-3 space-y-2 pl-5 list-disc text-gray-700 dark:text-gray-400">
-        <li>Глубоко понимать предмет</li>
-        <li>Уверенно сдавать ГИА на высокие баллы</li>
-        <li>Применять знания на протяжении всей жизни</li>
-      </ul>
-      <p class="mt-3 text-gray-700 dark:text-gray-400">
-        Подготовка включает как теоретический материал, так и практические задания
-        с индивидуальным закреплением.
-      </p>
-    </div>
-
-    <!-- Блок 3: Статистика -->
-    <div class="mb-12">
-      <h3 class="heading-block">Наши результаты</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-cards">
-          <div class="text-2xl font-bold text-blue-600">300+</div>
-          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ЕГЭ</div>
-        </div>
-        <div class="bg-cards">
-          <div class="text-2xl font-bold text-green-600">400+</div>
-          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ОГЭ</div>
-        </div>
-        <div class="bg-cards">
-          <div class="text-2xl font-bold text-purple-600">500+</div>
-          <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>улучшили знания по школьной программе</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Блок 4: Форматы обучения -->
-    <div>
-      <h3 class="heading-block">Форматы обучения</h3>
-      <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
-        Обучение проходит в <span class="font-medium">онлайн-формате</span>.
-        А для тех, кто предпочитает очные занятия, у нас есть отличное предложение:
-        мы являемся партнёрами <span class="font-medium">Иркутского филиала МГТУ ГА</span>,
-        где проводятся очные курсы по подготовке к ОГЭ и ЕГЭ.
-      </p>
-    </div>
-
-  </div>
-</section>
 
     <!-- Карусель -->
-<section class="py-12 px-4">
+    <section class="py-12 px-4">
   <div class="max-w-4xl mx-auto">
     <div
       x-data="{
@@ -314,7 +321,7 @@
       <div class="flex justify-center mt-5 space-x-2">
         <template x-for="i in total" :key="i">
           <button
-            @click="active = i"
+            @click="active = i-1"
             class="w-2.5 h-2.5 rounded-full transition-colors"
             :class="active === i-1 ? 'bg-blue-600' : 'bg-gray-300'"
           ></button>
@@ -327,7 +334,7 @@
   </main>
 
   <!-- Футер -->
-<footer class="font-1 py-10 relative">
+  <footer class="font-1 py-10 relative">
   <div class="max-w-6xl mx-auto px-4">
     <!-- Основной контент футера -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">

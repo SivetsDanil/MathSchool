@@ -1,10 +1,11 @@
+
 :root {
   --color-border: #e5e7eb; /* gray-200 */
   --color-bg-panel: #f9fafb; /* gray-50 */
-  --color-base-text: #111827; /* gray-900 */
-  --color-bg-font1: #3A4F28	; /* bg-gray-100 */
-  --color-bg-font-main2: #D9F6C0;
-  --color-bg-font-main: #D9F6C0;
+  --color-base-text: #2C1A0B; /* gray-900 */
+  --color-bg-font1: #4A4F28	; /* bg-gray-100 */
+  --color-bg-font-main2: #EAFBD8;
+  --color-bg-font-main: #EAFBD8;
 
 }
 
@@ -12,9 +13,9 @@
   --color-border: #111827; /* gray-900 */
   --color-bg-panel: #111827; /* gray-900 */
   --color-base-text: white;
-  --color-bg-font1: #1f2937; /* dark:bg-gray-800 */
-  --color-bg-font-main2: #052115		;
-    --color-bg-font-main: #052115		;
+  --color-bg-font1: #3A4F28; /* dark:bg-gray-800 */
+  --color-bg-font-main2: #052115;
+  --color-bg-font-main: #052115;
 
 }
 
@@ -29,14 +30,14 @@
     @apply text-gray-600 dark:text-gray-300 leading-relaxed;
   }
   .text-link {
-    @apply text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
+    @apply link-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
   }
   .heading-block {
-    @apply text-xl font-bold text-gray-900 dark:text-white mb-3;
+    @apply text-xl font-bold base-text mb-4;
   }
 
   .section-title {
-    @apply text-3xl font-bold text-center text-gray-900 dark:text-white mb-10;
+    @apply text-3xl font-bold text-center base-text mb-10;
   }
 
   .feature-card {
@@ -44,7 +45,10 @@
   }
 
   .btn-primary {
-    @apply inline-block bg-blue-600 dark:bg-blue-800 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+    @apply inline-block font1 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+  }
+  .btn-navbar {
+    @apply font-main2 hover:bg-blue-700 text-black rounded-lg transition-colors;
   }
   .bg-cards{
   @apply bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
@@ -57,6 +61,9 @@
   .base-text {
     color: var(--color-base-text);
   }
+  .link-text {
+    color: var(--color-bg-font-main);
+  }
   .font1 {
     background-color: var(--color-bg-font1);
   }
@@ -65,6 +72,15 @@
   }
   .font-main {
     background-color: var(--color-bg-font-main);
+  }
+  .shadow-navbar {
+    /* Светлая тема: тень в цвет фона навбара */
+    box-shadow: 0 10px 12px rgba(58, 79, 40, 0.4); /* #3A4F28 с прозрачностью */
+  }
+
+  .dark.shadow-navbar {
+    /* Тёмная тема: тень в цвет тёмного фона */
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.9); /* #1f2937 */
   }
 }
 
