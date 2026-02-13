@@ -2,7 +2,10 @@
 from flask_login import LoginManager, login_required, logout_user
 from flask import render_template, redirect
 from api import indexAPI
+import os
 from flask import Flask, request, jsonify
+from flask import send_from_directory
+
 from flask_login import current_user
 import hashlib
 import time
@@ -10,6 +13,7 @@ import time
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "Secret"
+LICENSE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'docs')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -35,6 +39,15 @@ class User:
 @login_manager.user_loader
 def load_user(user_id):
     return User(id=1)
+
+@app.route('/license')
+def license_pdf():
+    return send_from_directory(
+        LICENSE_FOLDER,
+        'license.pdf',  # имя файла
+        mimetype='application/pdf'
+    )
+
 
 
 def main():

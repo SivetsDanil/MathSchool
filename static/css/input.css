@@ -1,12 +1,36 @@
+:root {
+  --color-border: #e5e7eb; /* gray-200 */
+  --color-bg-panel: #f9fafb; /* gray-50 */
+  --color-base-text: #111827; /* gray-900 */
+  --color-bg-font1: #3A4F28	; /* bg-gray-100 */
+  --color-bg-font-main2: #D9F6C0;
+  --color-bg-font-main: #D9F6C0;
+
+}
+
+.dark {
+  --color-border: #111827; /* gray-900 */
+  --color-bg-panel: #111827; /* gray-900 */
+  --color-base-text: white;
+  --color-bg-font1: #1f2937; /* dark:bg-gray-800 */
+  --color-bg-font-main2: #052115		;
+    --color-bg-font-main: #052115		;
+
+}
+
+
 @tailwind base;
 @tailwind components;
 
-/* Содержимое components.css */
+
+
 @layer components {
   .text-body {
     @apply text-gray-600 dark:text-gray-300 leading-relaxed;
   }
-
+  .text-link {
+    @apply text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
+  }
   .heading-block {
     @apply text-xl font-bold text-gray-900 dark:text-white mb-3;
   }
@@ -26,5 +50,26 @@
   @apply bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
   }
 }
+@layer utilities {
+  .border-custom {
+    border-color: var(--color-border);
+  }
+  .base-text {
+    color: var(--color-base-text);
+  }
+  .font1 {
+    background-color: var(--color-bg-font1);
+  }
+  .font-main2 {
+    background-color: var(--color-bg-font-main2);
+  }
+  .font-main {
+    background-color: var(--color-bg-font-main);
+  }
+}
+
+
+
+
 
 @tailwind utilities;
