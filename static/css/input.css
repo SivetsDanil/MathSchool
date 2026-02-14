@@ -1,22 +1,23 @@
 
 :root {
-  --color-border: #e5e7eb; /* gray-200 */
-  --color-bg-panel: #f9fafb; /* gray-50 */
+  --color-border: #DED7D2; /* gray-200 */
+  --color-bg-block: #DDEEBB; /* gray-50 */
   --color-base-text: #2C1A0B; /* gray-900 */
-  --color-bg-font1: #4A4F28	; /* bg-gray-100 */
-  --color-bg-font-main2: #EAFBD8;
-  --color-bg-font-main: #EAFBD8;
+  --color-bg-font1: #3A5700	; /* bg-gray-100 */
+  --color-bg-font-main2: #DDEEBB; /* #DDEEBB */
+  --color-bg-font-main: #F1FFD3;
+  --color-btn-hover: #92C923;
 
 }
 
 .dark {
   --color-border: #111827; /* gray-900 */
-  --color-bg-panel: #111827; /* gray-900 */
-  --color-base-text: white;
-  --color-bg-font1: #3A4F28; /* dark:bg-gray-800 */
-  --color-bg-font-main2: #052115;
-  --color-bg-font-main: #052115;
-
+  --color-bg-block: #111827; /* gray-900 */
+  --color-base-text: #DED7D2;
+  --color-bg-font1: #203200; /* dark:bg-gray-800 */
+  --color-bg-font-main2: #0B1700;
+  --color-bg-font-main: #0A1500;
+  --color-btn-hover: #92C923;
 }
 
 
@@ -45,16 +46,23 @@
   }
 
   .btn-primary {
-    @apply inline-block font1 hover:bg-blue-700 dark:hover:bg-blue-900 text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+    @apply inline-block font1 hover:btn-hover text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
   }
   .btn-navbar {
-    @apply font-main2 hover:bg-blue-700 text-black rounded-lg transition-colors;
+    @apply font-main2 hover:btn-hover text-black rounded-lg transition-colors;
   }
   .bg-cards{
-  @apply bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
+  @apply font-block p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
   }
 }
 @layer utilities {
+  .to-font-main2 {
+    --tw-gradient-to: var(--color-bg-main2);
+  }
+  .to-font-main {
+    --tw-gradient-to: var(--color-bg-main);
+  }
+
   .border-custom {
     border-color: var(--color-border);
   }
@@ -72,6 +80,15 @@
   }
   .font-main {
     background-color: var(--color-bg-font-main);
+  }
+  .font-block {
+    background-color: var(--color-bg-block);
+  }
+  .btn-hover {
+    background-color: var(--color-btn-hover);
+  }
+  .logo-text {
+    color: var(--color-bg-font-main);
   }
   .shadow-navbar {
     /* Светлая тема: тень в цвет фона навбара */

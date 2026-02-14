@@ -7,7 +7,7 @@
   <!-- Навбар -->
   <header class="font1 shadow-navbar dark:shadow-navbar sticky top-0 z-50">
     <div class="max-w-10xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-4xl font-bold base-text">Smart school</div>
+      <div class="text-4xl font-bold logo-text">Smart school</div>
       <button onclick="document.documentElement.classList.toggle('dark')">
     🌓 Переключить тему
       </button>
@@ -28,7 +28,7 @@
   </header>
 
   <!-- Основной контент -->
-  <main class="flex-grow">
+  <main class="relative">
 
 
 
@@ -95,11 +95,11 @@
       </div>
     </section>
 
-    <section class="py-8 px-4">
+    <section class="py-6 px-4">
   <div id="why" class="max-w-[80vw] mx-auto scroll-mt-20">
 
     <!-- Заголовок -->
-    <span class="block section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#why')">
+    <span class="block font-main2 shadow-sm py-3 section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#why')">
       Почему выбирают Smart School?
     </span>
 
@@ -135,15 +135,15 @@
       <h3 class="heading-block">Наши результаты</h3>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="bg-cards">
-          <div class="text-2xl font-bold text-blue-600">300+</div>
+          <div class="text-2xl font-bold base-text">300+</div>
           <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ЕГЭ</div>
         </div>
         <div class="bg-cards">
-          <div class="text-2xl font-bold text-green-600">400+</div>
+          <div class="text-2xl font-bold base-text">400+</div>
           <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>подготовлено к ОГЭ</div>
         </div>
         <div class="bg-cards">
-          <div class="text-2xl font-bold text-purple-600">500+</div>
+          <div class="text-2xl font-bold base-text">500+</div>
           <div class="text-gray-700 dark:text-gray-400 mt-1">учеников<br>улучшили знания по школьной программе</div>
         </div>
       </div>
@@ -163,6 +163,7 @@
   </div>
 </section>
 
+    <div class=" inset-x-0 h-24 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));"></div>
 
     <section id="pluses" class="py-6 px-4 font-main2 scroll-mt-20">
   <div class="max-w-[80vw] mx-auto">
@@ -264,7 +265,7 @@
   </div>
 </section>
 
-<section id="tutors" class="py-6 px-4 font-main2 scroll-mt-20 mb-24">
+    <section id="tutors" class="py-6 px-4 font-main2 scroll-mt-20 mb-24">
   <div class="max-w-[80vw] mx-auto">
     <h2 class="section-title cursor-pointer" onclick="smoothScrollTo('#tutors')">Наши преподаватели</h2>
 
@@ -454,6 +455,133 @@
 </section>
 
 
+    <!-- Блок "Запись на консультацию" -->
+    <section class="py-12 px-4 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-[80vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <!-- Левая часть: форма -->
+    <div>
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Начать обучение — легко!
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        Наша команда всегда рада новым ученикам, оставь свои контакты и мы свяжемся с тобой!
+      </p>
+
+      <!-- Форма -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <input
+            type="text"
+            placeholder="Вас зовут"
+            class="px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          />
+          <div class="relative">
+            <select class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 text-gray-500">
+              <option>🇷🇺</option>
+            </select>
+            <input
+              type="tel"
+              placeholder="+7"
+              class="pl-12 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <input
+            type="email"
+            placeholder="Email"
+            class="px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          />
+        </div>
+        <button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-colors">
+          Записаться на консультацию
+        </button>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
+          Нажимая на кнопку, я соглашаюсь на обработку персональных данных
+        </p>
+      </div>
+    </div>
+
+    <!-- Правая часть: карусель преподавателей -->
+    <div class="relative">
+      <div
+        x-data="{
+          active: 0,
+          total: 3,
+          interval: null,
+          next() {
+            this.active = (this.active + 1) % this.total;
+          },
+          prev() {
+            this.active = (this.active - 1 + this.total) % this.total;
+          },
+          startAuto() {
+            this.interval = setInterval(() => this.next(), 3000);
+          },
+          stopAuto() {
+            clearInterval(this.interval);
+          }
+        }"
+        x-init="startAuto()"
+        @mouseenter="stopAuto()"
+        @mouseleave="startAuto()"
+        class="relative"
+      >
+        <!-- Слайды -->
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${active * 100}%)`">
+            <div class="w-full flex-shrink-0">
+              <img
+                src="{{ url_for('static', filename='images/carousel/img1.png') }}"
+                alt="Преподаватель 1"
+                class="w-full h-[520px] object-cover rounded-2xl"
+              >
+            </div>
+            <div class="w-full flex-shrink-0">
+              <img
+                src="{{ url_for('static', filename='images/carousel/img2.png') }}"
+                alt="Преподаватель 2"
+                class="w-full h-[520px] object-cover rounded-2xl"
+              >
+            </div>
+            <div class="w-full flex-shrink-0">
+              <img
+                src="{{ url_for('static', filename='images/carousel/img3.png') }}"
+                alt="Преподаватель 3"
+                class="w-full h-[520px] object-cover rounded-2xl"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Стрелки -->
+        <button
+          @click="prev()"
+          class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+          aria-label="Предыдущий слайд"
+        >
+          &lt;
+        </button>
+        <button
+          @click="next()"
+          class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+          aria-label="Следующий слайд"
+        >
+          &gt;
+        </button>
+
+        <!-- Индикаторы -->
+        <div class="flex justify-center mt-5 space-x-2">
+          <template x-for="i in total" :key="i">
+            <button
+              @click="active = i - 1"
+              class="w-2.5 h-2.5 rounded-full transition-colors"
+              :class="active === i - 1 ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'"
+            ></button>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
   <!-- Футер -->
