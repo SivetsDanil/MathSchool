@@ -1,0 +1,82 @@
+<!-- Карусель -->
+    <section class="py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div
+      x-data="{
+        active: 0,
+        total: 3,
+        interval: null,
+        next() {
+          this.active = (this.active + 1) % this.total;
+        },
+        prev() {
+          this.active = (this.active - 1 + this.total) % this.total;
+        },
+        startAuto() {
+          this.interval = setInterval(() => this.next(), 2000);
+        },
+        stopAuto() {
+          clearInterval(this.interval);
+        }
+      }"
+      x-init="startAuto()"
+      @mouseenter="stopAuto()"
+      @mouseleave="startAuto()"
+      class="relative"
+    >
+      <!-- Слайды -->
+      <div class="overflow-hidden rounded-2xl shadow-md">
+        <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${active * 100}%)`">
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel1.png') }}"
+              alt="Курс по алгебре"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel2.png') }}"
+              alt="Курс по геометрии"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+          <div class="w-full flex-shrink-0">
+            <img
+              src="{{ url_for('static', filename='images/carousel3.png') }}"
+              alt="Олимпиадная математика"
+              class="w-full h-[500px] object-cover"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Стрелки -->
+      <button
+        @click="prev()"
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+        aria-label="Предыдущий слайд"
+      >
+        &lt;
+      </button>
+      <button
+        @click="next()"
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+        aria-label="Следующий слайд"
+      >
+        &gt;
+      </button>
+
+      <!-- Индикаторы -->
+      <div class="flex justify-center mt-5 space-x-2">
+        <template x-for="i in total" :key="i">
+          <button
+            @click="active = i-1"
+            class="w-2.5 h-2.5 rounded-full transition-colors"
+            :class="active === i-1 ? 'bg-blue-600' : 'bg-gray-300'"
+          ></button>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>

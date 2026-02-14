@@ -41,8 +41,51 @@
         <h1 class="text-4xl md:text-5xl font-extrabold base-text leading-tight mb-12">
           онлайн школа нового поколения.
         </h1>
-        <p class="text-lg text-body max-w-2xl mx-auto mb-8">
-          Забудь все, что ты зубрил в школе - мы научим тебя понимать это.
+        <p class="text-lg text-body max-w-3xl mx-auto mb-8">
+          Забудь все, что ты зубрил в школе - мы научим тебя понимать
+          <span
+            x-data="{
+              words: ['математику!', 'физику!', 'информатику!'],
+              currentWord: '',
+              wordIndex: 0,
+              charIndex: 0,
+              isDeleting: false,
+              typingSpeed: 150,
+              deletingSpeed: 100,
+              pauseDuration: 1000,
+
+              init() {
+                this.type();
+              },
+
+              type() {
+                const current = this.words[this.wordIndex];
+
+                if (!this.isDeleting && this.charIndex < current.length) {
+                  // Печатаем
+                  this.currentWord = current.substring(0, this.charIndex + 1);
+                  this.charIndex++;
+                  setTimeout(() => this.type(), this.typingSpeed);
+                } else if (this.isDeleting && this.charIndex > 0) {
+                  // Удаляем
+                  this.currentWord = current.substring(0, this.charIndex - 1);
+                  this.charIndex--;
+                  setTimeout(() => this.type(), this.deletingSpeed);
+                } else {
+                  // Пауза и переключение
+                  this.isDeleting = !this.isDeleting;
+                  if (!this.isDeleting) {
+                    this.wordIndex = (this.wordIndex + 1) % this.words.length;
+                  }
+                  setTimeout(() => this.type(), this.pauseDuration);
+                }
+              }
+            }"
+            x-html="'<span class=\'italic text-2xl\'>' + currentWord + '<span class=\'animate-pulse\'>|</span>'"
+            class="inline-block min-w-[120px] text-left"
+          ></span>
+
+
         </p>
         <div>
           <a href="#" class="btn-primary">
@@ -52,16 +95,16 @@
       </div>
     </section>
 
-    <section class="py-14 px-4">
-  <div class="max-w-[80vw] mx-auto">
+    <section class="py-8 px-4">
+  <div id="why" class="max-w-[80vw] mx-auto scroll-mt-20">
 
     <!-- Заголовок -->
-    <h2 class="text-3xl md:text-5xl font-bold text-center base-text mb-36">
+    <span class="block section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#why')">
       Почему выбирают Smart School?
-    </h2>
+    </span>
 
     <!-- Блок 1: О школе -->
-    <div class="mb-12">
+    <div class="mb-8">
       <h3 class="heading-block">Первая онлайн-школа в Иркутске</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Наша школа не только поможет вам сдать ГИА на высокие баллы, но и подтянуть школьную программу.
@@ -71,7 +114,7 @@
     </div>
 
     <!-- Блок 2: Методика -->
-    <div class="mb-12">
+    <div class="mb-8">
       <h3 class="heading-block">Собственная методика обучения</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Наши преподаватели подготовили авторские методики, которые помогают:
@@ -121,13 +164,13 @@
 </section>
 
 
-    <section class="py-12 px-4 font-main2">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="section-title">Наши преимущества</h2>
+    <section id="pluses" class="py-6 px-4 font-main2 scroll-mt-20">
+  <div class="max-w-[80vw] mx-auto">
+    <h2 class="section-title  cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
       <!-- Карточка 1 -->
-      <div class="text-center">
+      <div class="feature-card text-center">
         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-blue-600" ...></svg>
         </div>
@@ -135,8 +178,16 @@
         <p class="text-body">Каждому ученику — персональный план обучения и поддержка куратора.</p>
       </div>
 
+      <!-- Блок 1 -->
+      <div class="feature-card">
+        <h3 class="text-xl font-semibold base-text mb-3">Индивидуальный план</h3>
+        <p class="text-body">
+          Каждый ученик получает персональную траекторию обучения с учётом его целей и уровня.
+        </p>
+      </div>
+
       <!-- Карточка 2 -->
-      <div class="text-center">
+      <div class="text-center feature-card ">
         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-green-600" ...></svg>
         </div>
@@ -145,7 +196,7 @@
       </div>
 
       <!-- Карточка 3 -->
-      <div class="text-center">
+      <div class="text-center feature-card ">
         <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-purple-600" ...></svg>
         </div>
@@ -156,49 +207,15 @@
   </div>
 </section>
 
-    <section class="py-12 px-4 font-main2">
-  <div class="max-w-6xl mx-auto pt-12 border-t border-custom">
-    <h2 class="section-title">Что мы предлагаем</h2>
-
-    <!-- Сетка: 1 колонка на мобильных, 3 — на десктопах -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Блок 1 -->
-      <div class="feature-card">
-        <h3 class="text-xl font-semibold base-text mb-3">Индивидуальный план</h3>
-        <p class="text-body">
-          Каждый ученик получает персональную траекторию обучения с учётом его целей и уровня.
-        </p>
-      </div>
-
-      <!-- Блок 2 -->
-      <div class="feature-card">
-        <h3 class="text-xl font-semibold base-text mb-3">Живые вебинары</h3>
-        <p class="text-body">
-          Прямые эфиры 2 раза в неделю: можно задавать вопросы в реальном времени.
-        </p>
-      </div>
-
-      <!-- Блок 3 -->
-      <div class="feature-card">
-        <h3 class="text-xl font-semibold base-text mb-3">Проверка домашек</h3>
-        <p class="text-body">
-          Все задания проверяются преподавателем с подробным фидбэком.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
     <section class="py-12 px-4 font-main2">
-  <div class="max-w-3xl mx-auto pt-12 border-t border-custom">
-    <h2 class="section-title">Как проходит обучение</h2>
-
+  <div class="max-w-[80vw] mx-auto pt-12 mb-6">
+    <h2 class="section-title mb-24 mt-6">Как проходит обучение?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-16 ">
     <div class="space-y-8">
       <!-- Элемент 1 -->
-      <div class="flex">
+      <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
           <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">1</span>
@@ -207,13 +224,15 @@
         <div>
           <h3 class="text-xl font-semibold base-text">Диагностика</h3>
           <p class="text-body mt-1">
-            Определяем текущий уровень и цели ученика.
+            Определяем текущий уровень и цели ученика.             Делаем ооооооооооооооооочень важное дело.      Очень очень
+
           </p>
         </div>
       </div>
+      </div>
 
       <!-- Элемент 2 -->
-      <div class="flex">
+      <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
           <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">2</span>
@@ -228,7 +247,7 @@
       </div>
 
       <!-- Элемент 3 -->
-      <div class="flex">
+      <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
           <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">3</span>
@@ -245,97 +264,201 @@
   </div>
 </section>
 
+<section id="tutors" class="py-6 px-4 font-main2 scroll-mt-20 mb-24">
+  <div class="max-w-[80vw] mx-auto">
+    <h2 class="section-title cursor-pointer" onclick="smoothScrollTo('#tutors')">Наши преподаватели</h2>
 
-    <!-- О нас / Почему мы -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <!-- Блок: Математика -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Математика</h3>
 
-    <!-- Карусель -->
-    <section class="py-12 px-4">
-  <div class="max-w-4xl mx-auto">
-    <div
-      x-data="{
-        active: 0,
-        total: 3,
-        interval: null,
-        next() {
-          this.active = (this.active + 1) % this.total;
-        },
-        prev() {
-          this.active = (this.active - 1 + this.total) % this.total;
-        },
-        startAuto() {
-          this.interval = setInterval(() => this.next(), 2000);
-        },
-        stopAuto() {
-          clearInterval(this.interval);
-        }
-      }"
-      x-init="startAuto()"
-      @mouseenter="stopAuto()"
-      @mouseleave="startAuto()"
-      class="relative"
-    >
-      <!-- Слайды -->
-      <div class="overflow-hidden rounded-2xl shadow-md">
-        <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${active * 100}%)`">
-          <div class="w-full flex-shrink-0">
-            <img
-              src="{{ url_for('static', filename='images/carousel1.png') }}"
-              alt="Курс по алгебре"
-              class="w-full h-[500px] object-cover"
-            >
-          </div>
-          <div class="w-full flex-shrink-0">
-            <img
-              src="{{ url_for('static', filename='images/carousel2.png') }}"
-              alt="Курс по геометрии"
-              class="w-full h-[500px] object-cover"
-            >
-          </div>
-          <div class="w-full flex-shrink-0">
-            <img
-              src="{{ url_for('static', filename='images/carousel3.png') }}"
-              alt="Олимпиадная математика"
-              class="w-full h-[500px] object-cover"
-            >
+          <div x-data="{
+            active: 0,
+            teachers: [],
+            async init() {
+              const res = await fetch('/api/tutors?subject=math');
+              this.teachers = await res.json();
+            }
+          }" class="relative">
+            <!-- Фото + стрелки -->
+            <div class="relative mb-4">
+              <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                <img
+                  x-show="teachers.length > 0"
+                  :src="`{{ url_for('static', filename='images/tutors/tutor-') }}${teachers[active].id}.jpg`"
+                  alt="Преподаватель"
+                  class="w-full h-full object-cover"
+                >
+              </div>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active - 1 + teachers.length) % teachers.length"
+                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Предыдущий преподаватель"
+              >←</button>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active + 1) % teachers.length"
+                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Следующий преподаватель"
+              >→</button>
+            </div>
+
+            <!-- Информация -->
+            <template x-if="teachers.length > 0">
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <template x-for="tag in teachers[active].tags" :key="tag">
+                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 text-xs rounded">
+                      <span x-text="tag"></span>
+                    </span>
+                  </template>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
+
+                <!-- Кнопка Подробнее -->
+                <a :href="`/tutor/${teachers[active].id}`"
+                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                  Подробнее
+                </a>
+              </div>
+            </template>
+
+            <template x-if="teachers.length === 0">
+              <div class="text-gray-500">Загрузка...</div>
+            </template>
           </div>
         </div>
       </div>
 
-      <!-- Стрелки -->
-      <button
-        @click="prev()"
-        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
-        aria-label="Предыдущий слайд"
-      >
-        &lt;
-      </button>
-      <button
-        @click="next()"
-        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
-        aria-label="Следующий слайд"
-      >
-        &gt;
-      </button>
+      <!-- Блок: Информатика -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Информатика</h3>
+          <div x-data="{
+            active: 0,
+            teachers: [],
+            async init() {
+              const res = await fetch('/api/tutors?subject=it');
+              this.teachers = await res.json();
+            }
+          }" class="relative">
+            <div class="relative mb-4">
+              <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                <img
+                  x-show="teachers.length > 0"
+                  :src="`{{ url_for('static', filename='images/tutors/tutor-') }}${teachers[active].id}.jpg`"
+                  alt="Преподаватель"
+                  class="w-full h-full object-cover"
+                >
+              </div>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active - 1 + teachers.length) % teachers.length"
+                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Предыдущий преподаватель"
+              >←</button>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active + 1) % teachers.length"
+                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Следующий преподаватель"
+              >→</button>
+            </div>
+            <template x-if="teachers.length > 0">
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <template x-for="tag in teachers[active].tags" :key="tag">
+                    <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs rounded">
+                      <span x-text="tag"></span>
+                    </span>
+                  </template>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
+                <a :href="`/tutor/${teachers[active].id}`"
+                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                  Подробнее
+                </a>
+              </div>
+            </template>
+            <template x-if="teachers.length === 0">
+              <div class="text-gray-500">Загрузка...</div>
+            </template>
+          </div>
+        </div>
+      </div>
 
-      <!-- Индикаторы -->
-      <div class="flex justify-center mt-5 space-x-2">
-        <template x-for="i in total" :key="i">
-          <button
-            @click="active = i-1"
-            class="w-2.5 h-2.5 rounded-full transition-colors"
-            :class="active === i-1 ? 'bg-blue-600' : 'bg-gray-300'"
-          ></button>
-        </template>
+      <!-- Блок: Физика -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Физика</h3>
+          <div x-data="{
+            active: 0,
+            teachers: [],
+            async init() {
+              const res = await fetch('/api/tutors?subject=physics');
+              this.teachers = await res.json();
+            }
+          }" class="relative">
+            <div class="relative mb-4">
+              <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                <img
+                  x-show="teachers.length > 0"
+                  :src="`{{ url_for('static', filename='images/tutors/tutor-') }}${teachers[active].id}.jpg`"
+                  alt="Преподаватель"
+                  class="w-full h-full object-cover"
+                >
+              </div>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active - 1 + teachers.length) % teachers.length"
+                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Предыдущий преподаватель"
+              >←</button>
+              <button
+                x-show="teachers.length > 1"
+                @click="active = (active + 1) % teachers.length"
+                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 dark:bg-gray-800/80 flex items-center justify-center shadow-md hover:bg-white/90 dark:hover:bg-gray-800/90 transition"
+                aria-label="Следующий преподаватель"
+              >→</button>
+            </div>
+            <template x-if="teachers.length > 0">
+              <div>
+                <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <template x-for="tag in teachers[active].tags" :key="tag">
+                    <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 text-xs rounded">
+                      <span x-text="tag"></span>
+                    </span>
+                  </template>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
+                <a :href="`/tutor/${teachers[active].id}`"
+                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                  Подробнее
+                </a>
+              </div>
+            </template>
+            <template x-if="teachers.length === 0">
+              <div class="text-gray-500">Загрузка...</div>
+            </template>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+
   </main>
 
   <!-- Футер -->
-  <footer class="font-1 py-10 relative">
-  <div class="max-w-6xl mx-auto px-4">
+  <footer class="font1 py-10 relative">
+  <div class="max-w-[80vw] mx-auto px-4">
     <!-- Основной контент футера -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       <!-- Логотип и описание -->
@@ -380,4 +503,20 @@
 </footer>
 
 </div>
+<script>
+  function smoothScrollTo(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+      // Вычисляем позицию с учётом навбара
+      const navbarHeight = 80; // подстрой под себя
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+</script>
 {% endblock %}

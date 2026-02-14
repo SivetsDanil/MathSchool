@@ -5,10 +5,13 @@ from api import indexAPI
 import os
 from flask import Flask, request, jsonify
 from flask import send_from_directory
+from databaseAPI import get_tutors_by_subject, init_db
 
 from flask_login import current_user
 import hashlib
 import time
+
+
 
 
 app = Flask(__name__)
@@ -17,6 +20,11 @@ LICENSE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stati
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+init_db()
+
+
+
 
 
 class User:
@@ -48,6 +56,12 @@ def license_pdf():
         mimetype='application/pdf'
     )
 
+
+@app.route('/api/tutors')
+def get_tutors():
+    subject = request.args.get('subject', '')
+    tutors = get_tutors_by_subject(subject)
+    return jsonify(tutors)
 
 
 def main():
