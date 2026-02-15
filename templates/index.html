@@ -33,7 +33,7 @@
 
 
     <!-- Hero-секция -->
-    <section class="min-h-[83vh] flex items-center">
+    <section class="min-h-[80vh] flex items-center">
       <div class="max-w-10xl mx-auto text-center mb-16">
         <h1 class="text-[4rem] md:text-[12rem] font-extrabold base-text leading-tight -mb-6">
           Smart school
@@ -163,11 +163,11 @@
   </div>
 </section>
 
-    <div class=" inset-x-0 h-24 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));"></div>
+    <div class=" inset-x-0 h-16 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));"></div>
 
     <section id="pluses" class="py-6 px-4 font-main2 scroll-mt-20">
   <div class="max-w-[80vw] mx-auto">
-    <h2 class="section-title  cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
+    <h2 class="section-title cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
       <!-- Карточка 1 -->
@@ -210,7 +210,7 @@
 
 
 
-    <section class="py-12 px-4 font-main2">
+    <section class="py-20 px-4 font-main2">
   <div class="max-w-[80vw] mx-auto pt-12 mb-6">
     <h2 class="section-title mb-24 mt-6">Как проходит обучение?</h2>
     <div class="grid grid-cols-1 md:grid-cols-3  gap-16 ">
@@ -265,13 +265,16 @@
   </div>
 </section>
 
-    <section id="tutors" class="py-6 px-4 font-main2 scroll-mt-20 mb-24">
+    <div class=" inset-x-0 h-16 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main2), var(--color-bg-font-main));"></div>
+
+
+    <section id="tutors" class="py-6 px-4 font-main scroll-mt-20">
   <div class="max-w-[80vw] mx-auto">
     <h2 class="section-title cursor-pointer" onclick="smoothScrollTo('#tutors')">Наши преподаватели</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
       <!-- Блок: Математика -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+      <div class="font-main2 rounded-xl shadow-sm overflow-hidden">
         <div class="p-6">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Математика</h3>
 
@@ -322,7 +325,7 @@
 
                 <!-- Кнопка Подробнее -->
                 <a :href="`/tutor/${teachers[active].id}`"
-                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                   class="mt-4 btn-primary px-4 py-2 rounded-lg text-sm">
                   Подробнее
                 </a>
               </div>
@@ -336,7 +339,7 @@
       </div>
 
       <!-- Блок: Информатика -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+      <div class="font-main2 rounded-xl shadow-sm overflow-hidden">
         <div class="p-6">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Информатика</h3>
           <div x-data="{
@@ -381,7 +384,7 @@
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
                 <a :href="`/tutor/${teachers[active].id}`"
-                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                   class="mt-4 btn-primary px-4 py-2 rounded-lg text-sm">
                   Подробнее
                 </a>
               </div>
@@ -394,7 +397,7 @@
       </div>
 
       <!-- Блок: Физика -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+      <div class="font-main2 rounded-xl shadow-sm overflow-hidden">
         <div class="p-6">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Физика</h3>
           <div x-data="{
@@ -439,7 +442,7 @@
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
                 <a :href="`/tutor/${teachers[active].id}`"
-                   class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                   class="mt-4 btn-primary px-4 py-2 rounded-lg text-sm">
                   Подробнее
                 </a>
               </div>
@@ -454,50 +457,76 @@
   </div>
 </section>
 
+    <div class=" inset-x-0 h-16 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));"></div>
 
     <!-- Блок "Запись на консультацию" -->
-    <section class="py-12 px-4 bg-gray-50 dark:bg-gray-900">
-  <div class="max-w-[80vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <section class="py-12 px-4 font-main2">
+  <div class="max-w-[90vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
     <!-- Левая часть: форма -->
     <div>
-      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+      <h2 class="section-title text-left mb-6">
         Начать обучение — легко!
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-16">
         Наша команда всегда рада новым ученикам, оставь свои контакты и мы свяжемся с тобой!
       </p>
 
       <!-- Форма -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <input
-            type="text"
-            placeholder="Вас зовут"
-            class="px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-          />
-          <div class="relative">
-            <select class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 text-gray-500">
-              <option>🇷🇺</option>
-            </select>
-            <input
-              type="tel"
-              placeholder="+7"
-              class="pl-12 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-          <input
-            type="email"
-            placeholder="Email"
-            class="px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-          />
-        </div>
-        <button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-colors">
-          Записаться на консультацию
-        </button>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
-          Нажимая на кнопку, я соглашаюсь на обработку персональных данных
-        </p>
-      </div>
+<form id="consultationForm" class="font-main rounded-2xl p-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <!-- Имя -->
+    <div class="relative">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Ваше имя"
+        required
+        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+      />
+      <div id="nameError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
+    </div>
+
+    <!-- Телефон -->
+    <div class="relative">
+
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="+7 (999) 123-45-67"
+        required
+        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+      />
+      <div id="phoneError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
+    </div>
+
+    <!-- Email -->
+    <div class="relative">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+      />
+      <div id="emailError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full btn-primary text-white font-bold py-4 rounded-xl transition-colors duration-200"
+  >
+    Записаться на консультацию
+  </button>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
+  Нажимая на кнопку, я соглашаюсь на обработку
+  <a href="/policy" class="text-green-600 hover:text-green-800 dark:text-blue-400 dark:hover:text-blue-300 underline">персональных данных</a>
+</p>
+</form>
     </div>
 
     <!-- Правая часть: карусель преподавателей -->
@@ -574,7 +603,7 @@
             <button
               @click="active = i - 1"
               class="w-2.5 h-2.5 rounded-full transition-colors"
-              :class="active === i - 1 ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'"
+              :class="active === i - 1 ? 'font1' : 'bg-gray-300 dark:bg-gray-600'"
             ></button>
           </template>
         </div>
@@ -646,5 +675,107 @@
       });
     }
   }
+</script>
+<script>
+const form = document.getElementById('consultationForm');
+const nameInput = document.getElementById('name');
+const phoneInput = document.getElementById('phone');
+const emailInput = document.getElementById('email');
+const nameError = document.getElementById('nameError');
+const phoneError = document.getElementById('phoneError');
+const emailError = document.getElementById('emailError');
+
+// Валидация при отправке формы
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Сброс всех ошибок
+  nameError.textContent = '';
+  phoneError.textContent = '';
+  emailError.textContent = '';
+
+  let isValid = true;
+
+  // Проверка имени
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameError.textContent = 'Обязательное поле';
+    isValid = false;
+  } else if (name.length < 2) {
+    nameError.textContent = 'Минимум 2 символа';
+    isValid = false;
+  }
+
+  // Проверка телефона
+  const phone = phoneInput.value.trim();
+  if (!phone) {
+    phoneError.textContent = 'Обязательное поле';
+    isValid = false;
+  } else if (!/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(phone)) {
+    phoneError.textContent = 'Неверный формат телефона';
+    isValid = false;
+  }
+
+  // Проверка email
+  const email = emailInput.value.trim();
+  if (!email) {
+    emailError.textContent = 'Обязательное поле';
+    isValid = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailError.textContent = 'Неверный формат email';
+    isValid = false;
+  }
+
+  // Если всё валидно - отправка
+  if (isValid) {
+    alert('Форма успешно отправлена!');
+    form.reset();
+  }
+});
+
+// Очистка ошибок при вводе в поле
+nameInput.addEventListener('input', function() {
+  nameError.textContent = '';
+});
+
+phoneInput.addEventListener('input', function(e) {
+  phoneError.textContent = '';
+
+  // Маска для телефона
+  let value = e.target.value.replace(/\D/g, '');
+
+  // Убираем первую 8, если есть, и ставим 7
+  if (value.startsWith('8')) {
+    value = '7' + value.slice(1);
+  }
+  // Если не начинается с 7 - добавляем
+  if (!value.startsWith('7')) {
+    value = '7' + value;
+  }
+
+  // Ограничиваем 11 цифрами
+  value = value.substring(0, 11);
+
+  // Форматируем
+  let formatted = '+7';
+  if (value.length > 1) {
+    formatted += ' (' + value.substring(1, 4);
+  }
+  if (value.length >= 4) {
+    formatted += ') ' + value.substring(4, 7);
+  }
+  if (value.length >= 7) {
+    formatted += '-' + value.substring(7, 9);
+  }
+  if (value.length >= 9) {
+    formatted += '-' + value.substring(9, 11);
+  }
+
+  e.target.value = formatted;
+});
+
+emailInput.addEventListener('input', function() {
+  emailError.textContent = '';
+});
 </script>
 {% endblock %}
