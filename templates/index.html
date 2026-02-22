@@ -8,14 +8,12 @@
   <header class="font1 shadow-navbar dark:shadow-navbar sticky top-0 z-50">
     <div class="max-w-10xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="text-4xl font-bold logo-text">Smart school</div>
-      <button onclick="document.documentElement.classList.toggle('dark')">
-    🌓 Переключить тему
-      </button>
+
       <nav class="hidden md:flex items-center space-x-6">
-        <a href="#" class="text-link">Курсы</a>
-        <a href="#" class="text-link">О нас</a>
-        <a href="#" class="btn-navbar px-5 py-2">
-          Войти
+        <a href="#" class="text-link1" onclick="smoothScrollTo('#why'); return false;">О нас</a>
+        <a href="#" class="text-link1" onclick="smoothScrollTo('#reviews'); return false;">Отзывы</a>
+        <a href="#" class="btn-navbar px-5 py-2" onclick="smoothScrollTo('#contact'); return false;">
+          Оставить заявку
         </a>
       </nav>
       <!-- Мобильное меню (пока скрыто) -->
@@ -88,7 +86,7 @@
 
         </p>
         <div>
-          <a href="#" class="btn-primary">
+          <a class="btn-primary cursor-pointer" onclick="smoothScrollTo('#tutors')">
             Начать бесплатно
           </a>
         </div>
@@ -460,11 +458,11 @@
     <div class=" inset-x-0 h-16 pointer-events-none" style="top: 100%; background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));"></div>
 
     <!-- Блок "Запись на консультацию" -->
-    <section class="py-12 px-4 font-main2">
-  <div class="max-w-[90vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <section id="contact" class="py-12 px-4 font-main2 scroll-mt-20">
+  <div class="max-w-[90vw] min-h-[75vh] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
     <!-- Левая часть: форма -->
     <div>
-      <h2 class="section-title text-left mb-6">
+      <h2 class="section-title text-left mb-6 cursor-pointer" onclick="smoothScrollTo('#contact')">
         Начать обучение — легко!
       </h2>
       <p class="text-lg text-gray-600 dark:text-gray-300 mb-16">
@@ -472,8 +470,8 @@
       </p>
 
       <!-- Форма -->
-<form id="consultationForm" class="font-main rounded-2xl p-12">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<form id="consultationForm" class="font-main rounded-2xl p-12 min-h-[35vh]">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 mt-6">
     <!-- Имя -->
     <div class="relative">
       <input
@@ -482,7 +480,7 @@
         name="name"
         placeholder="Ваше имя"
         required
-        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="nameError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -496,7 +494,7 @@
         name="phone"
         placeholder="+7 (999) 123-45-67"
         required
-        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="phoneError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -509,7 +507,7 @@
         name="email"
         placeholder="Email"
         required
-        class="w-full px-4 py-3 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="emailError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -517,7 +515,7 @@
 
   <button
     type="submit"
-    class="w-full btn-primary text-white font-bold py-4 rounded-xl transition-colors duration-200"
+    class="w-full btn-primary text-white font-bold py-5 rounded-xl transition-colors duration-200"
   >
     Записаться на консультацию
   </button>
@@ -561,21 +559,21 @@
               <img
                 src="{{ url_for('static', filename='images/carousel/img1.png') }}"
                 alt="Преподаватель 1"
-                class="w-full h-[520px] object-cover rounded-2xl"
+                class="w-full h-[620px] object-cover rounded-2xl"
               >
             </div>
             <div class="w-full flex-shrink-0">
               <img
                 src="{{ url_for('static', filename='images/carousel/img2.png') }}"
                 alt="Преподаватель 2"
-                class="w-full h-[520px] object-cover rounded-2xl"
+                class="w-full h-[620px] object-cover rounded-2xl"
               >
             </div>
             <div class="w-full flex-shrink-0">
               <img
                 src="{{ url_for('static', filename='images/carousel/img3.png') }}"
                 alt="Преподаватель 3"
-                class="w-full h-[520px] object-cover rounded-2xl"
+                class="w-full h-[620px] object-cover rounded-2xl"
               >
             </div>
           </div>
@@ -584,7 +582,7 @@
         <!-- Стрелки -->
         <button
           @click="prev()"
-          class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
+          class="absolute left-8 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white w-10 h-10 rounded-full shadow-md flex items-center justify-center z-10 transition-all"
           aria-label="Предыдущий слайд"
         >
           &lt;
@@ -603,7 +601,7 @@
             <button
               @click="active = i - 1"
               class="w-2.5 h-2.5 rounded-full transition-colors"
-              :class="active === i - 1 ? 'font1' : 'bg-gray-300 dark:bg-gray-600'"
+              :class="active === i - 1 ? 'font1' : 'bg-gray-500'"
             ></button>
           </template>
         </div>
@@ -611,70 +609,290 @@
     </div>
   </div>
 </section>
-  </main>
+
+
+
+<section id="reviews" class=" px-4 font-main2 scroll-mt-20">
+  <div class="max-w-[90vw] mx-auto text-center cursor-pointer" onclick="smoothScrollTo('#reviews')">
+    <h2 class="section-title font-main shadow-sm py-3">
+      Отзывы наших учеников
+    </h2>
+  </div>
+  <div class="max-w-[80vw] min-h-[60vh] mx-auto">
+
+    <!-- Carousel root -->
+    <div
+      x-data="carousel()"
+      x-init="init()"
+      @mouseenter="stopAuto()"
+      @mouseleave="startAuto()"
+      class="relative mt-[10vh]"
+    >
+      <!-- arrows -->
+      <button
+        @click="prev()"
+        class="absolute -left-8 top-1/3 -translate-y-1/2 -translate-x-1/2 font-main dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+        aria-label="Предыдущий слайд"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <button
+        @click="next()"
+        class="absolute -right-8 top-1/3 -translate-y-1/2 translate-x-1/2 font-main dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+        aria-label="Следующий слайд"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- track wrapper -->
+      <div class="overflow-hidden">
+        <!-- TRACK: flex row of slides; x-ref for reset logic -->
+        <div
+          x-ref="track"
+          :class="transitionEnabled ? 'flex transition-transform duration-1000 ease-in-out' : 'flex'"
+          :style="`transform: translateX(-${active * (100 / visibleCount)}%)`"
+        >
+          <!-- Using reviewsLooped (clones + originals + clones) -->
+          <template x-for="(review, idx) in reviewsLooped" :key="idx">
+            <!-- slide: use same markup as у тебя -->
+            <div class="w-full md:w-1/3 flex-shrink-0 px-2 min-h-[30vh]">
+              <div class="font-main dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow  min-h-[25vh]">
+                <div class="flex items-start gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" :class="review.avatarColor">
+                    <span class="font-bold text-lg" :class="review.textColor" x-text="review.initial"></span>
+                  </div>
+                  <div>
+                    <div class="font-bold base-text" x-text="review.name"></div>
+                    <div class="text-sm text-body" x-text="review.course"></div>
+                  </div>
+                </div>
+                <div class="flex gap-1 mb-3">
+                  <template x-for="i in 5" :key="i">
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69l1.07-3.292z"/>
+                    </svg>
+                  </template>
+                </div>
+                <p class="text-body leading-relaxed" x-text="review.text"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <p class="text-lg text-body max-w-5xl mx-auto mt-16">
+          Твой успех — наш следующий отзыв. Присоединяйся к нашим выпускникам и сдай ЕГЭ на высокий балл!
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Alpine component (place before </body> or in a script block) -->
+<script>
+function carousel(){
+  return {
+    // core data
+    baseReviews: [
+      { name: 'Анна К.', course: 'Подготовка к ЕГЭ', text: 'Благодаря преподавателям Smart school я сдала ЕГЭ на 85 баллов! Раньше математика была моим слабым местом, но индивидуальный подход и подробные объяснения всё изменили.', avatarColor: 'bg-blue-100 dark:bg-blue-900/30', textColor: 'text-blue-600 dark:text-blue-300', initial: 'А' },
+      { name: 'Михаил С.', course: 'Олимпиадная математика', text: 'Занимаюсь олимпиадной математикой уже полгода. Преподаватель объясняет сложные темы так, что всё становится понятно. Попал в призёры городской олимпиады!', avatarColor: 'bg-green-100 dark:bg-green-900/30', textColor: 'text-green-600 dark:text-green-300', initial: 'М' },
+      { name: 'Екатерина В.', course: 'Подготовка к ОГЭ', text: 'Дочка раньше боялась математики, а теперь с удовольствием занимается. Подготовились к ОГЭ за 8 месяцев, результат — 5 баллов! Спасибо за индивидуальный подход.', avatarColor: 'bg-purple-100 dark:bg-purple-900/30', textColor: 'text-purple-600 dark:text-purple-300', initial: 'Е' },
+      { name: 'Дмитрий П.', course: 'Алгебра 10 класс', text: 'Раньше не понимал логарифмы и тригонометрию, а теперь решаю сложные задачи без проблем. Преподаватель объясняет так, что всё «щёлкает».', avatarColor: 'bg-red-100 dark:bg-red-900/30', textColor: 'text-red-600 dark:text-red-300', initial: 'Д' },
+      { name: 'Софья Л.', course: 'Геометрия 9 класс', text: 'Геометрия была моим кошмаром, но после занятий здесь я начала понимать доказательства и решать задачи. Преподаватель очень терпеливый и объясняет на пальцах.', avatarColor: 'bg-orange-100 dark:bg-orange-900/30', textColor: 'text-orange-600 dark:text-orange-300', initial: 'С' },
+      { name: 'Иван К.', course: 'Информатика 11 класс', text: 'Готовился к ЕГЭ по информатике. Программирование раньше казалось чем-то недостижимым, но здесь объяснили всё с нуля. Сдал на 92 балла!', avatarColor: 'bg-indigo-100 dark:bg-indigo-900/30', textColor: 'text-indigo-600 dark:text-indigo-300', initial: 'И' }
+    ],
+
+    // reactive
+    active: 0,                 // current translate index in extended array
+    visibleCount: 3,           // 3 on md+, 1 on mobile
+    interval: null,
+    transitionEnabled: true,   // toggle to disable transition when jumping
+
+    // computed: extended array with clones at both ends
+    get reviewsLooped(){
+      const L = this.baseReviews.length;
+      const n = this.visibleCount;
+      // cloned tail + originals + cloned head
+      return [
+        ...this.baseReviews.slice(L - n, L),
+        ...this.baseReviews,
+        ...this.baseReviews.slice(0, n)
+      ];
+    },
+
+    // init: set responsive visibleCount and start at first real slide
+    init(){
+      this.visibleCount = window.innerWidth >= 768 ? 3 : 1;
+      this.active = this.visibleCount; // start at first real item
+      // resize listener to update visibleCount
+      window.addEventListener('resize', () => {
+        const newCount = window.innerWidth >= 768 ? 3 : 1;
+        if (newCount !== this.visibleCount){
+          // disable transition, update visibleCount and reset active to keep view sensible
+          this.transitionEnabled = false;
+          this.visibleCount = newCount;
+          this.active = this.visibleCount;
+          this.$nextTick(() => {
+            // force reflow then re-enable transition
+            void this.$refs.track.offsetWidth;
+            this.transitionEnabled = true;
+          });
+        }
+      });
+      // ensure transitionend handler (for infinite loop resets)
+      this.$refs.track.addEventListener('transitionend', () => this.onTransitionEnd());
+      this.startAuto();
+    },
+
+    // move forward/back (one slide)
+    next(){
+      this.active++;
+    },
+    prev(){
+      this.active--;
+    },
+
+    // transitionend: if we stepped into clones, jump to corresponding real index (no animation)
+    onTransitionEnd(){
+      const L = this.baseReviews.length;
+      const n = this.visibleCount;
+      // forward overflow: active >= L + n  -> subtract L
+      if (this.active >= L + n){
+        this.transitionEnabled = false;
+        this.active = this.active - L;
+        this.$nextTick(() => {
+          void this.$refs.track.offsetWidth; // reflow
+          this.transitionEnabled = true;
+        });
+      }
+      // backward overflow: active < n -> add L
+      if (this.active < n){
+        this.transitionEnabled = false;
+        this.active = this.active + L;
+        this.$nextTick(() => {
+          void this.$refs.track.offsetWidth;
+          this.transitionEnabled = true;
+        });
+      }
+    },
+
+    // autoplay
+    startAuto(){
+      this.stopAuto();
+      this.interval = setInterval(()=> this.next(), 4000);
+    },
+    stopAuto(){
+      if (this.interval) { clearInterval(this.interval); this.interval = null; }
+    }
+  }
+}
+</script>  </main>
 
 </div>
-<footer class="font1 pt-12 pb-6 border-t border-gray-200 dark:border-gray-800">
+<footer class="font-main pt-[3vw] pb-6 border-t border-gray-200 dark:border-gray-800">
   <div class="max-w-[90vw] mx-auto px-4">
-    <!-- Верхняя часть: 3 колонки -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-      <!-- Колонка 1: Логотип + телефон -->
-      <div>
-        <div class="text-4xl font-bold base-text">Smart school</div>
-        <p class="text-md base-text mt-1">онлайн школа нового поколения.</p>
-        <a href="tel:88006004302" class="text-2xl font-bold base-text mt-4 inline-flex items-center gap-2 hover:text-blue-600 transition-colors">
+    <!-- Верхняя часть: mobile = 2 колонки (Smart left, nav right); md+ = 3 колонки (твой оригинальный layout) -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8 items-start">
+      <!-- Smart school (mobile: left column) -->
+      <div class="text-left md:text-left">
+        <div class="text-2xl md:text-4xl font-bold bold-text base-text">Smart school</div>
+        <p class="text-sm md:text-md base-text mt-1">онлайн школа нового поколения.</p>
+        <a class="inline-flex items-center gap-2 mt-4 text-lg md:text-2xl font-bold base-text transition-colors"
+           href="tel:88006004302">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
           8 (800) 600-43-02
         </a>
       </div>
 
-      <!-- Колонка 2: Реквизиты -->
-      <div>
-        <div class="text-md font-semibold base-text mt-4">ИНН: 190204521812</div>
-        <p class="text-md font-semibold base-text mt-2">ИП Садовский Вениамин Валентинович</p>
-        <div class="text-md font-semibold base-text mt-2">ОГРН: 324190000022634</div>
-
+      <!-- Навигация: mobile = right column (text-right); md+ = центр (md:-ml-24) как у тебя было -->
+      <div class="flex flex-col gap-2 text-right md:text-left md:-ml-24">
+        <a href="#why" class="text-link mt-2 md:mt-0" onclick="smoothScrollTo('#why'); return false;">О нас</a>
+        <a href="#pluses" class="text-link" onclick="smoothScrollTo('#pluses'); return false;">План обучения</a>
+        <a href="#tutors" class="text-link" onclick="smoothScrollTo('#tutors'); return false;">Преподаватели</a>
       </div>
 
-      <!-- Колонка 3: Навигация -->
-      <div class="flex flex-col gap-1">
-        <a href="#pluses" class="text-link hover:underline">Наши преимущества</a>
-        <a href="#why" class="text-link hover:underline">О нас</a>
-        <a href="#tutors" class="text-link hover:underline">Преподаватели</a>
-        <a href="/support" class="text-link hover:underline">Поддержка</a>
+      <!-- Реквизиты: видимы только на md+ (как раньше, справа) -->
+      <div class="hidden md:block text-right md:ml-auto md:mt-2">
+        <p class="text-sm font-semibold text-link">ИП Садовский Вениамин Валентинович</p>
+        <div class="text-sm font-semibold text-link">ИНН: 190204521812</div>
+        <div class="text-sm font-semibold text-link">ОГРН: 324190000022634</div>
       </div>
     </div>
 
-    <!-- Нижняя часть: фиксированная ширина, не съезжает -->
+    <!-- Нижняя часть: здесь на mobile выводим реквизиты НАД copyright, а также справа от copyright — ссылки policy -->
     <div class="border-t border-custom pt-6 mt-6">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div class="text-xs base-text">
+      <!-- Mobile-only: реквизиты над footer-line -->
+
+      <!-- Основная строка: mobile = 2 колонки (копирайт left, политики right); md+ = твой оригинальный flex -->
+      <div class="md:hidden grid grid-cols-2 items-center gap-2">
+        <!-- Left: © 2026 -->
+              <div class="block md:hidden mb-4 text-right">
+        <p class="text-sm font-semibold text-link">ИП Садовский Вениамин Валентинович</p>
+        <div class="text-sm font-semibold text-link">ИНН: 190204521812</div>
+        <div class="text-sm font-semibold text-link">ОГРН: 324190000022634</div>
+      </div>
+
+
+        <!-- Right (mobile): политики — справа и выровнено по правому краю -->
+        <div class="text-xs text-link text-right flex flex-col items-end gap-1">
+          <a href="/policy" class="text-link text-xs">Политика конфиденциальности</a>
+          <a href="/agreement" class="text-link text-xs">Пользовательское соглашение</a>
+          <a href="/license" class="text-link inline-flex items-center gap-1 text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Образовательная лицензия
+          </a>
+                    <a href="/about" class="text-link text-xs">Сведения об образовательной организации</a>
+
+        </div>
+      </div>
+                  <div class="md:hidden text-xs text-link">
+          © 2026 Smart school. Все права защищены.
+          <div class="text-xs text-link">
+          Разработано by DanSivet
+        </div>
+        </div>
+
+      <!-- Desktop/tablet: оригинальный блок без изменений -->
+      <div class="hidden md:flex md:items-center md:justify-between gap-4">
+        <div class="text-xs text-link">
           © 2026 Smart school. Все права защищены.
         </div>
 
-        <div class="flex flex-col md:flex-row md:items-center md:gap-6 gap-2">
-          <a href="/policy" class="text-link hover:underline text-xs">Политика конфиденциальности</a>
-          <a href="/agreement" class="text-link hover:underline text-xs">Пользовательское соглашение</a>
-          <a href="/about" class="text-link hover:underline text-xs">Сведения об образовательной организации</a>
-          <a href="/license" class="text-link hover:underline inline-flex items-center gap-1 text-xs">
+        <div class="text-xs text-link">
+          Разработано by DanSivet
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="/policy" class="text-link text-xs">Политика конфиденциальности</a>
+          <a href="/agreement" class="text-link text-xs">Пользовательское соглашение</a>
+          <a href="/about" class="text-link text-xs">Сведения об образовательной организации</a>
+          <a href="/license" class="text-link inline-flex items-center gap-1 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            Лицензия
+            Образовательная лицензия
           </a>
         </div>
       </div>
     </div>
   </div>
-</footer>
-<script>
+</footer><script>
   function smoothScrollTo(selector) {
     const element = document.querySelector(selector);
     if (element) {
       // Вычисляем позицию с учётом навбара
-      const navbarHeight = 80; // подстрой под себя
+      const navbarHeight = 100; // подстрой под себя
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navbarHeight;
 

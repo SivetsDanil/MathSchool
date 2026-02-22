@@ -7,7 +7,7 @@
   --color-bg-font-main2: #DDEEBB; /* #DDEEBB */
   --color-bg-font-main: #F1FFD3;
   --color-btn-hover: #92C923;
-
+  --color-link-text: #add55c;
 }
 
 .dark {
@@ -30,8 +30,11 @@
   .text-body {
     @apply text-gray-600 dark:text-gray-300 leading-relaxed;
   }
+  .text-link1 {
+    @apply link1-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
+  }
   .text-link {
-    @apply link-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
+    @apply text-gray-600 hover:text-gray-900 dark:hover:text-gray-600 transition-colors w-fit;
   }
   .heading-block {
     @apply text-xl font-bold base-text mb-4;
@@ -73,6 +76,9 @@
     color: var(--color-base-text);
   }
   .link-text {
+    color: var(--color-link-text);
+  }
+  .link1-text {
     color: var(--color-bg-font-main);
   }
   .font1 {
