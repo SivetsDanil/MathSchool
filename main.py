@@ -14,12 +14,12 @@ import time
 
 
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = "Secret"
+application = Flask(__name__, static_folder='static', static_url_path='/static')
+application.config['SECRET_KEY'] = "Secret"
 LICENSE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'docs')
 
 login_manager = LoginManager()
-login_manager.init_app(app)
+login_manager.init_app(application)
 
 init_db()
 
@@ -48,25 +48,28 @@ class User:
 def load_user(user_id):
     return User(id=1)
 
-@app.route('/license')
+@application.route('/license')
 def license_pdf():
     return send_from_directory(
-        LICENSE_FOLDER,
-        'license.pdf',  # имя файла
+        os.path.join(application.root_path, 'static', 'docs'),
+        'license.pdf',
         mimetype='application/pdf'
     )
 
 
-@app.route('/api/tutors')
+@application.route('/api/tutors')
 def get_tutors():
     subject = request.args.get('subject', '')
     tutors = get_tutors_by_subject(subject)
     return jsonify(tutors)
 
+@application.route("/")
+def index():
+    return render_template('index.html')
+
 
 def main():
-    app.register_blueprint(indexAPI.blueprint)
-    app.run(port=3000, host='127.0.0.1', debug=True)
+    application.run(host='0.0.0.0', port='8100')
 
 if __name__ == '__main__':
     main()
