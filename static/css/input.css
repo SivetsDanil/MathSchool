@@ -1,23 +1,24 @@
 
 :root {
-  --color-border: #DDEEBB; /* gray-200 */
-  --color-bg-block: #DDEEBB; /* gray-50 */
+  --color-border: #AAF0D1; /* gray-200 */
+  --color-bg-block: #AAF0D1; /* gray-50 */
   --color-base-text: #2C1A0B; /* gray-900 */
-  --color-bg-font1: #3A5700	; /* bg-gray-100 */
-  --color-bg-font-main2: #DDEEBB; /* #DDEEBB */
+  --color-bg-font1: #1A3D2E; /* bg-gray-100 */
+  --color-bg-font-main2: #AAF0D1; /* #DDEEBB */
   --color-bg-font-main: #F1FFD3;
-  --color-btn-hover: #92C923;
+  --color-btn-hover: #AAF0D1;
   --color-link-text: #add55c;
 }
 
 .dark {
-  --color-border: #111827; /* gray-900 */
-  --color-bg-block: #111827; /* gray-900 */
-  --color-base-text: #DED7D2;
-  --color-bg-font1: #203200; /* dark:bg-gray-800 */
-  --color-bg-font-main2: #0B1700;
-  --color-bg-font-main: #0A1500;
+  --color-border: #DDEEBB; /* gray-200 */
+  --color-bg-block: #AAF0D1; /* gray-50 */
+  --color-base-text: #2C1A0B; /* gray-900 */
+  --color-bg-font1: #1A3D2E; /* bg-gray-100 */
+  --color-bg-font-main2: #AAF0D1; /* #DDEEBB */
+  --color-bg-font-main: #E5D5B5;
   --color-btn-hover: #92C923;
+  --color-link-text: #add55c;
 }
 
 
@@ -26,15 +27,27 @@
 
 
 
+
+
+
+
+
+html, body {
+    background-color: var(--color-bg-font1);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
 @layer components {
   .text-body {
     @apply text-gray-600 dark:text-gray-300 leading-relaxed;
   }
   .text-link1 {
-    @apply link1-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors;
+    @apply link-text hover:link-text2 dark:hover:text-gray-600 transition-colors;
   }
   .text-link {
-    @apply text-gray-600 hover:text-gray-900 dark:hover:text-gray-600 transition-colors w-fit;
+    @apply footer-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors w-fit;
   }
   .heading-block {
     @apply text-xl font-bold base-text mb-4;
@@ -45,14 +58,14 @@
   }
 
   .feature-card {
-    @apply p-6 font-main rounded-xl shadow-sm hover:shadow-md transition-shadow;
+    @apply p-6 font-block rounded-xl shadow-sm hover:shadow-md transition-shadow;
   }
 
   .btn-primary {
     @apply inline-block font1 hover:btn-hover text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
   }
   .btn-navbar {
-    @apply font-main2 hover:btn-hover text-black rounded-lg transition-colors;
+    @apply font-main hover:btn-hover text-black rounded-lg transition-colors;
   }
   .bg-cards{
   @apply font-block p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
@@ -75,10 +88,10 @@
   .base-text {
     color: var(--color-base-text);
   }
-  .link-text {
-    color: var(--color-link-text);
+  .link-text2 {
+    color: var(--color-bg-font-main2);
   }
-  .link1-text {
+  .link-text {
     color: var(--color-bg-font-main);
   }
   .font1 {
@@ -98,6 +111,9 @@
   }
   .logo-text {
     color: var(--color-bg-font-main);
+  }
+  .footer-text {
+    color: var(--color-bg-font-main2);
   }
   .shadow-navbar {
     /* Светлая тема: тень в цвет фона навбара */
@@ -126,6 +142,7 @@
 .aspect-\[4\/3\] {
   aspect-ratio: 4/3;
 }
+
 
 
 

@@ -6,7 +6,6 @@ import os
 from flask import Flask, request, jsonify
 from flask import send_from_directory
 from databaseAPI import get_tutors_by_subject, init_db
-
 from flask_login import current_user
 import hashlib
 import time
@@ -69,7 +68,7 @@ def index():
 
 
 def main():
-    application.run(host='0.0.0.0', port='8100')
+    application.run(host='0.0.0.0', port='8100', debug=True)
 
 if __name__ == '__main__':
     main()
