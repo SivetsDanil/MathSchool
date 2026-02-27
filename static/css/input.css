@@ -47,14 +47,14 @@ html, body {
     @apply link-text hover:link-text2 dark:hover:text-gray-600 transition-colors;
   }
   .text-link {
-    @apply footer-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors w-fit;
+    @apply footer-text hover:text-gray-900 dark:hover:text-gray-600 transition-colors w-fit ;
   }
   .heading-block {
     @apply text-xl font-bold base-text mb-4;
   }
 
   .section-title {
-    @apply text-3xl md:text-5xl font-bold text-center base-text mb-10;
+    @apply text-[1.5rem] md:text-5xl font-bold text-center base-text mb-10;
   }
 
   .feature-card {
@@ -62,7 +62,7 @@ html, body {
   }
 
   .btn-primary {
-    @apply inline-block font1 hover:btn-hover text-white font-medium px-8 py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+    @apply inline-block font1 hover:btn-hover text-white font-medium px-4 md:px-8 py-3 md:py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
   }
   .btn-navbar {
     @apply font-main hover:btn-hover text-black rounded-lg transition-colors;

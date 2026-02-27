@@ -31,15 +31,64 @@
 
 
     <!-- Hero-секция -->
-    <section class="font-main min-h-[80vh] mt-8 flex items-center">
+    <section class="font-main min-h-[80vh] mt-16 md:mt-8 flex items-center">
       <div class="max-w-10xl mx-auto text-center mb-16">
-        <h1 class="text-[4rem] md:text-[12rem] font-extrabold base-text leading-tight -mb-6">
+        <h1 class="text-[3.5rem] md:text-[12rem] font-extrabold base-text leading-tight md:-mb-6 -mb-4">
           Спект.online
         </h1>
-        <h1 class="text-4xl md:text-5xl font-extrabold base-text leading-tight mb-12">
+        <h1 class="text-1xl md:text-5xl font-extrabold base-text leading-tight mb-12">
           онлайн школа нового поколения.
         </h1>
-        <p class="text-lg text-body max-w-3xl mx-auto mb-8">
+        <p class="md:hidden text-[0.7rem] md:text-lg text-body max-w-3xl mx-auto -mb-2 ml-2 md:ml-0 text-left md:text-center">Забудь все, что ты зубрил в школе - </p>
+
+        <p class="md:hidden text-[0.7rem] md:text-lg text-body max-w-3xl mx-auto mb-8 text-right md:text-center">
+          мы научим тебя понимать
+          <span
+            x-data="{
+              words: ['математику!', 'физику!', 'информатику!'],
+              currentWord: '',
+              wordIndex: 0,
+              charIndex: 0,
+              isDeleting: false,
+              typingSpeed: 150,
+              deletingSpeed: 100,
+              pauseDuration: 1000,
+
+              init() {
+                this.type();
+              },
+
+              type() {
+                const current = this.words[this.wordIndex];
+
+                if (!this.isDeleting && this.charIndex < current.length) {
+                  // Печатаем
+                  this.currentWord = current.substring(0, this.charIndex + 1);
+                  this.charIndex++;
+                  setTimeout(() => this.type(), this.typingSpeed);
+                } else if (this.isDeleting && this.charIndex > 0) {
+                  // Удаляем
+                  this.currentWord = current.substring(0, this.charIndex - 1);
+                  this.charIndex--;
+                  setTimeout(() => this.type(), this.deletingSpeed);
+                } else {
+                  // Пауза и переключение
+                  this.isDeleting = !this.isDeleting;
+                  if (!this.isDeleting) {
+                    this.wordIndex = (this.wordIndex + 1) % this.words.length;
+                  }
+                  setTimeout(() => this.type(), this.pauseDuration);
+                }
+              }
+            }"
+            x-html="'<span class=\'italic md:text-2xl text-[1rem]\'>' + currentWord + '<span class=\'animate-pulse\'>|</span>'"
+            class="inline-block min-w-[120px] text-left"
+          ></span>
+
+
+        </p>
+
+        <p class="hidden md:block text-lg text-body max-w-3xl mx-auto mb-8">
           Забудь все, что ты зубрил в школе - мы научим тебя понимать
           <span
             x-data="{
@@ -86,27 +135,26 @@
 
         </p>
         <div>
-          <a class="btn-primary cursor-pointer" onclick="smoothScrollTo('#tutors')">
+          <a class="btn-primary cursor-pointer text-[0.8rem] md:text-1xl px-8" onclick="smoothScrollTo('#tutors')">
             Начать бесплатно
           </a>
         </div>
       </div>
     </section>
 
-    <section class="font-main py-6 px-4">
+    <section class="font-main md:py-6 px-4">
   <div id="why" class="max-w-[80vw] mx-auto scroll-mt-20">
 
     <!-- Заголовок -->
-    <span class="block font-main2 shadow-sm py-3 section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#why')">
-      Почему выбирают Smart School?
+    <span class="block font-main2 shadow-sm py-3 section-title text-center cursor-pointer" onclick="smoothScrollTo('#why')">
+      Почему выбирают Спект?
     </span>
 
     <!-- Блок 1: О школе -->
     <div class="mb-8">
       <h3 class="heading-block">Первая онлайн-школа в Иркутске</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
-        Наша школа не только поможет вам сдать экзамены на высокие баллы, но и подтянуть школьную программу. Именно мы, молодые специалисты, найдём самый креативный подход к каждому ученику, и вы начнёте не просто учить,
-        и вы начнёте не просто учить, а <span class="font-medium text-gray-900 dark:text-gray-400">понимать сам предмет</span>.
+        Наша школа не только поможет вам сдать экзамены на высокие баллы, но и подтянуть школьную программу. Именно мы, квалифицированные и молодые специалисты, найдём самый креативный подход к каждому ученику. С нами вы начнёте не просто учить шаблоны, а <span class="font-medium text-gray-900 dark:text-gray-400">понимать сам предмет</span>.
       </p>
     </div>
 
@@ -147,7 +195,7 @@
     </div>
 
     <!-- Блок 4: Форматы обучения -->
-    <div>
+    <div class="mb-16 md:mb-8">
       <h3 class="heading-block">Форматы обучения</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Обучение проходит в <span class="font-medium">онлайн-формате</span>.
@@ -163,24 +211,25 @@
 
     <section id="pluses" class="py-6 px-4 font-main scroll-mt-20">
   <div class="max-w-[80vw] mx-auto">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
+    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:mt-24">
       <!-- Карточка 1 -->
       <div class="feature-card text-center">
         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-blue-600" ...></svg>
         </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Индивидуальный подход</h3>
-        <p class="text-body">Каждому ученику — персональный план обучения и поддержка куратора.</p>
+        <h3 class="text-xl font-semibold base-text mb-2">Индивидуальность</h3>
+        <p class="text-body ">Каждому ученику <span class="font-medium">персональный</span> план обучения с учётом его целей и уровня. </p>
       </div>
 
       <!-- Блок 1 -->
-      <div class="feature-card">
-        <h3 class="text-xl font-semibold base-text mb-3">Индивидуальный план</h3>
-        <p class="text-body">
-          Каждый ученик получает персональную траекторию обучения с учётом его целей и уровня.
-        </p>
+      <div class="feature-card text-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" ...></svg>
+        </div>
+        <h3 class="text-xl font-semibold base-text mb-2">Вовлеченность</h3>
+        <p class="text-body ">Нам важно не просто дать материал, а помочь ученикам <span class="font-medium">усвоить</span> его.</p>
       </div>
 
       <!-- Карточка 2 -->
@@ -188,8 +237,8 @@
         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-green-600" ...></svg>
         </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Живые вебинары</h3>
-        <p class="text-body">Прямые эфиры с преподавателями 2 раза в неделю + запись.</p>
+        <h3 class="text-xl font-semibold base-text mb-2">Живой диалог</h3>
+        <p class="text-body">Онлайн созвоны, быстрый ответ в чате по вопросам, мы <span class="font-medium">всегда на связи</span>.</p>
       </div>
 
       <!-- Карточка 3 -->
@@ -197,31 +246,33 @@
         <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-purple-600" ...></svg>
         </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Проверка домашек</h3>
-        <p class="text-body">Все задания проверяются вручную с подробным фидбэком.</p>
+        <h3 class="text-xl font-semibold base-text md:mb-2">Проверка заданий</h3>
+        <p class="text-body">По желанию можем давать <span class="font-medium">дополнительные задания</span> на дом и проверять их.</p>
       </div>
+
+
     </div>
   </div>
 </section>
 
 
 
-    <section class="py-20 px-4 font-main">
-  <div class="max-w-[80vw] mx-auto pt-12 mb-6">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center mb-[10vh] cursor-pointer mb-24 mt-6">Как проходит обучение?</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3  gap-16 ">
-    <div class="space-y-8">
+    <section class="md:py-20 px-4 font-main">
+  <div class="max-w-[90vw] mx-auto pt-20 md:pt-12 md:mb-6">
+    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] md:mb-24 md:mt-6">Как проходит обучение?</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4  gap-4 ">
+    <div class="md:space-y-8">
       <!-- Элемент 1 -->
       <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
-          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+          <div class="-ml-3 w-10 h-10 md:ml-0 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">1</span>
           </div>
         </div>
         <div>
-          <h3 class="text-xl font-semibold base-text">Диагностика</h3>
-          <p class="text-body mt-1">
-            Определяем текущий уровень и цели ученика.             Делаем ооооооооооооооооочень важное дело.      Очень очень
+          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Диагностика</h3>
+          <p class="text-body mt-1 -ml-12 max-w-32 md:max-w-64 min-h-64 md:min-h-32">
+            Проводим пробное занятие, определяем текущий уровень и цели ученика.
 
           </p>
         </div>
@@ -231,14 +282,14 @@
       <!-- Элемент 2 -->
       <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
-          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+          <div class="-ml-3 w-10 h-10 md:ml-0 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">2</span>
           </div>
         </div>
         <div>
-          <h3 class="text-xl font-semibold base-text">Персональный план</h3>
-          <p class="text-body mt-1">
-            Составляем индивидуальную программу обучения.
+          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">План</h3>
+          <p class="text-body mt-1 -ml-12">
+            Составляем индивидуальную программу обучения и расписание. Количество часов в неделю на Ваше усмотрение.
           </p>
         </div>
       </div>
@@ -246,25 +297,41 @@
       <!-- Элемент 3 -->
       <div class="flex  feature-card ">
         <div class="flex-shrink-0 mr-4">
-          <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+          <div class="-ml-3 w-10 h-10 md:ml-0 bg-blue-100 rounded-full flex items-center justify-center">
             <span class="text-blue-700 font-bold">3</span>
           </div>
         </div>
         <div>
-          <h3 class="text-xl font-semibold base-text">Регулярные занятия</h3>
-          <p class="text-body mt-1">
-            Вебинары, домашки, проверка и обратная связь.
+          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Занятия</h3>
+          <p class="text-body  mt-1 -ml-12">
+            Изучаем весь необходимый материал онлайн. Отвечаем по вопросам в личных сообщениях, проверяем ваши работы.
           </p>
         </div>
       </div>
+
+            <div class="flex  feature-card ">
+        <div class="flex-shrink-0 mr-4">
+          <div class="-ml-3 w-10 h-10 md:ml-0 bg-blue-100 rounded-full flex items-center justify-center">
+            <span class="text-blue-700 font-bold">4</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Поддержка</h3>
+          <p class="text-body  mt-1 -ml-12">
+            Поддерживаем наших учеников вплоть до получения результатов. И, наконец, вместе радуемся Вашим успехам!
+          </p>
+        </div>
+      </div>
+
+
     </div>
   </div>
 </section>
 
 
-<section id="tutors" class="py-6 px-4 font-main scroll-mt-20">
+<section id="tutors" class="py-20 md:py-6 px-4 font-main scroll-mt-20">
   <div class="max-w-[80vw] mx-auto">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#tutors')">
+    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#tutors')">
       Наши преподаватели
     </h2>
 
@@ -437,7 +504,7 @@
     </div>
 
     <!-- Мобильная карусель -->
-    <div class="md:hidden relative">
+    <div class="md:hidden relative -mb-12 md:mb-0">
       <button
         @click="prevSubject()"
         class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 rounded-full w-10 h-10 flex items-center justify-center shadow-md"
@@ -657,19 +724,19 @@
      style="background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));">
 </div>
     <!-- Блок "Запись на консультацию" -->
-    <section id="contact" class="py-12 px-4 font-main2 scroll-mt-20">
+    <section id="contact" class="md:py-12 px-4 font-main2 scroll-mt-20">
   <div class="max-w-[90vw] min-h-[75vh] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
     <!-- Левая часть: форма -->
     <div>
       <h2 class="section-title text-left mb-6 cursor-pointer" onclick="smoothScrollTo('#contact')">
         Начать обучение — легко!
       </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-16">
+      <p class="text-sm md:text-lg text-gray-600 dark:text-gray-300 mb-16">
         Наша команда всегда рада новым ученикам, оставь свои контакты и мы свяжемся с тобой!
       </p>
 
       <!-- Форма -->
-<form id="consultationForm" class="font-main rounded-2xl p-12 min-h-[35vh]">
+<form id="consultationForm" class="font-main rounded-2xl p-8 md:p-12 min-h-[35vh]">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 mt-6">
     <!-- Имя -->
     <div class="relative">
@@ -679,7 +746,7 @@
         name="name"
         placeholder="Ваше имя"
         required
-        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-2 md:py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="nameError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -693,7 +760,7 @@
         name="phone"
         placeholder="+7 (999) 123-45-67"
         required
-        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-2 md:py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="phoneError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -706,7 +773,7 @@
         name="email"
         placeholder="Email"
         required
-        class="w-full px-4 py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
+        class="w-full px-4 py-2 md:py-4 rounded-xl border-2 border-custom focus:outline-none focus:ring-2 focus:ring-green-700  font-main link-text transition-colors"
       />
       <div id="emailError" class="absolute -bottom-5 left-0 text-red-500 text-xs min-h-4"></div>
     </div>
@@ -714,7 +781,7 @@
 
   <button
     type="submit"
-    class="w-full btn-primary text-white font-bold py-5 rounded-xl transition-colors duration-200"
+    class="w-full btn-primary text-white font-bold md:py-5 rounded-xl transition-colors duration-200 text-[1rem] md:text-1xl"
   >
     Записаться на консультацию
   </button>
@@ -818,7 +885,7 @@
       Отзывы наших учеников
     </h2>
   </div>
-  <div class="max-w-[80vw] min-h-[60vh] mx-auto">
+  <div class="max-w-[80vw] min-h-[65vh] md:min-h-[60vh] mx-auto">
 
     <!-- Carousel root -->
     <div
@@ -831,7 +898,7 @@
       <!-- arrows -->
       <button
         @click="prev()"
-        class="absolute -left-8 top-1/3 -translate-y-1/2 -translate-x-1/2 font-main2 dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+        class="absolute -left-3 md:-left-8 top-1/3 -translate-y-1/2 -translate-x-1/2 font-main2 dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
         aria-label="Предыдущий слайд"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -841,7 +908,7 @@
 
       <button
         @click="next()"
-        class="absolute -right-8 top-1/3 -translate-y-1/2 translate-x-1/2 font-main2 dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+        class="absolute -right-3 md:-right-8 top-1/3 -translate-y-1/2 translate-x-1/2 font-main2 dark:bg-gray-800/90 hover:bg-white/100 dark:hover:bg-gray-800 text-gray-800 dark:text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
         aria-label="Следующий слайд"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -884,7 +951,7 @@
           </template>
         </div>
       </div>
-      <p class="text-lg text-body max-w-5xl mx-auto mt-16">
+      <p class="text-[0.7rem] md:text-lg text-body max-w-5xl mx-auto mt-10 md:mt-16">
           Твой успех — наш следующий отзыв. Присоединяйся к нашим выпускникам и сдай ЕГЭ на высокий балл!
       </p>
 
@@ -1000,8 +1067,8 @@ function carousel(){
       <!-- Smart school (mobile: left column) -->
       <div class="text-left md:text-left">
         <div class="text-2xl md:text-4xl font-bold logo-text base-text">Спект.online</div>
-        <p class="text-sm md:text-md base-text logo-text mt-1">онлайн школа нового поколения.</p>
-        <a class="inline-flex items-center gap-2 mt-4 text-lg md:text-2xl font-bold base-text logo-text transition-colors"
+        <p class="text-[0.7rem] md:text-md base-text logo-text md:mt-1">онлайн школа нового поколения.</p>
+        <a class="inline-flex items-center gap-2 mt-4 text-sm md:text-lg md:text-2xl font-bold base-text logo-text transition-colors"
            href="tel:88006004302">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1012,10 +1079,10 @@ function carousel(){
       </div>
 
       <!-- Навигация: mobile = right column (text-right); md+ = центр (md:-ml-24) как у тебя было -->
-      <div class="flex flex-col gap-2 text-right md:text-left md:-ml-24">
-        <a href="#why" class="text-link mt-2 md:mt-0" onclick="smoothScrollTo('#why'); return false;">О нас</a>
-        <a href="#pluses" class="text-link" onclick="smoothScrollTo('#pluses'); return false;">План обучения</a>
-        <a href="#tutors" class="text-link" onclick="smoothScrollTo('#tutors'); return false;">Преподаватели</a>
+      <div class="flex flex-col gap-1 md:gap-2 text-right md:text-left md:-ml-24">
+        <a href="#why" class="text-link mt-4 md:mt-0 text-sm md:text-1xl" onclick="smoothScrollTo('#why'); return false;">О нас</a>
+        <a href="#pluses" class="text-link text-sm md:text-1xl" onclick="smoothScrollTo('#pluses'); return false;">План обучения</a>
+        <a href="#tutors" class="text-link text-sm md:text-1xl" onclick="smoothScrollTo('#tutors'); return false;">Преподаватели</a>
       </div>
 
       <!-- Реквизиты: видимы только на md+ (как раньше, справа) -->
@@ -1033,33 +1100,31 @@ function carousel(){
       <!-- Основная строка: mobile = 2 колонки (копирайт left, политики right); md+ = твой оригинальный flex -->
       <div class="md:hidden grid grid-cols-2 items-center gap-2">
         <!-- Left: © 2026 -->
-              <div class="block md:hidden mb-4 text-right">
-        <p class="text-sm font-semibold text-link">ИП Садовский Вениамин Валентинович</p>
-        <div class="text-sm font-semibold text-link">ИНН: 190204521812</div>
-        <div class="text-sm font-semibold text-link">ОГРН: 324190000022634</div>
+              <div class="block md:hidden text-left">
+        <p class="text-[0.5rem] font-semibold text-link -mt-10">ИП Садовский Вениамин Валентинович</p>
+        <div class="text-[0.5rem] font-semibold text-link">ИНН: 190204521812</div>
+        <div class="text-[0.5rem] font-semibold text-link">ОГРН: 324190000022634</div>
       </div>
 
 
         <!-- Right (mobile): политики — справа и выровнено по правому краю -->
-        <div class="text-xs text-link text-right flex flex-col items-end gap-1">
-          <a href="/policy" class="text-link text-xs">Политика конфиденциальности</a>
-          <a href="/agreement" class="text-link text-xs">Пользовательское соглашение</a>
-          <a href="/license" class="text-link inline-flex items-center gap-1 text-xs">
+        <div class="text-link text-right flex flex-col items-end gap-1">
+          <a href="/policy" class="text-link text-[0.5rem] -mt-4">Политика конфиденциальности</a>
+          <a href="/agreement" class="text-link text-[0.5rem]">Пользовательское соглашение</a>
+          <a href="/license" class="text-link inline-flex items-center gap-1 text-[0.5rem]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Образовательная лицензия
           </a>
-                    <a href="/about" class="text-link text-xs">Сведения об образовательной организации</a>
+                    <a href="/about" class="text-link text-[0.5rem] -ml-6">Сведения об образовательной организации</a>
 
         </div>
       </div>
-                  <div class="md:hidden text-xs text-link">
-          © 2026 Smart school. Все права защищены.
-          <div class="text-xs text-link">
-          Разработано by DanSivet
-        </div>
+                  <div class="md:hidden text-[0.3rem] text-link mt-4">
+          © 2026 Smart school. Все права защищены. Разработано by DanSivet
+
         </div>
 
       <!-- Desktop/tablet: оригинальный блок без изменений -->
