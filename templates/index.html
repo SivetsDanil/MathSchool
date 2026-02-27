@@ -33,15 +33,15 @@
     <!-- Hero-секция -->
     <section class="font-main min-h-[80vh] mt-16 md:mt-8 flex items-center">
       <div class="max-w-10xl mx-auto text-center mb-16">
-        <h1 class="text-[3.5rem] md:text-[12rem] font-extrabold base-text leading-tight md:-mb-6 -mb-4">
+        <h1 class="text-[3.8rem] md:text-[12rem] font-extrabold base-text leading-tight md:-mb-6 -mb-4">
           Спект.online
         </h1>
-        <h1 class="text-1xl md:text-5xl font-extrabold base-text leading-tight mb-12">
+        <h1 class="text-[1.3rem] md:text-5xl font-extrabold base-text leading-tight mb-12">
           онлайн школа нового поколения.
         </h1>
-        <p class="md:hidden text-[0.7rem] md:text-lg text-body max-w-3xl mx-auto -mb-2 ml-2 md:ml-0 text-left md:text-center">Забудь все, что ты зубрил в школе - </p>
+        <p class="md:hidden text-[0.9rem] md:text-lg text-body max-w-3xl mx-auto -mb-2 ml-2 md:ml-0 text-left md:text-center">Забудь все, что ты зубрил в школе - </p>
 
-        <p class="md:hidden text-[0.7rem] md:text-lg text-body max-w-3xl mx-auto mb-8 text-right md:text-center">
+        <p class="md:hidden text-[0.9rem] md:text-lg text-body max-w-3xl mx-auto mb-8 text-right md:text-center">
           мы научим тебя понимать
           <span
             x-data="{
@@ -135,7 +135,7 @@
 
         </p>
         <div>
-          <a class="btn-primary cursor-pointer text-[0.8rem] md:text-1xl px-8" onclick="smoothScrollTo('#tutors')">
+          <a class="btn-primary cursor-pointer text-[0.9rem] md:text-1xl px-8" onclick="smoothScrollTo('#tutors')">
             Начать бесплатно
           </a>
         </div>
@@ -270,7 +270,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Диагностика</h3>
+          <h3 class="text-[1.1rem] md:text-xl font-semibold base-text mt-2 mb-5">Диагностика</h3>
           <p class="text-body mt-1 -ml-12 max-w-32 md:max-w-64 min-h-64 md:min-h-32">
             Проводим пробное занятие, определяем текущий уровень и цели ученика.
 
@@ -287,7 +287,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">План</h3>
+          <h3 class="text-[1.1rem] md:text-xl font-semibold base-text mt-2 mb-5">План</h3>
           <p class="text-body mt-1 -ml-12">
             Составляем индивидуальную программу обучения и расписание. Количество часов в неделю на Ваше усмотрение.
           </p>
@@ -302,7 +302,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Занятия</h3>
+          <h3 class="text-[1.1rem] md:text-xl font-semibold base-text mt-2 mb-5">Занятия</h3>
           <p class="text-body  mt-1 -ml-12">
             Изучаем весь необходимый материал онлайн. Отвечаем по вопросам в личных сообщениях, проверяем ваши работы.
           </p>
@@ -316,7 +316,7 @@
           </div>
         </div>
         <div>
-          <h3 class="text-[1rem] md:text-xl font-semibold base-text mt-2 mb-5">Поддержка</h3>
+          <h3 class="text-[1.1rem] md:text-xl font-semibold base-text mt-2 mb-5">Поддержка</h3>
           <p class="text-body  mt-1 -ml-12">
             Поддерживаем наших учеников вплоть до получения результатов. И, наконец, вместе радуемся Вашим успехам!
           </p>
@@ -724,14 +724,14 @@
      style="background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));">
 </div>
     <!-- Блок "Запись на консультацию" -->
-    <section id="contact" class="md:py-12 px-4 font-main2 scroll-mt-20">
+    <section id="contact" class="py-8 md:py-12 px-4 font-main2 scroll-mt-20">
   <div class="max-w-[90vw] min-h-[75vh] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
     <!-- Левая часть: форма -->
     <div>
       <h2 class="section-title text-left mb-6 cursor-pointer" onclick="smoothScrollTo('#contact')">
         Начать обучение — легко!
       </h2>
-      <p class="text-sm md:text-lg text-gray-600 dark:text-gray-300 mb-16">
+      <p class="text-md md:text-lg text-gray-600 dark:text-gray-300 mb-16">
         Наша команда всегда рада новым ученикам, оставь свои контакты и мы свяжемся с тобой!
       </p>
 
@@ -825,7 +825,7 @@
               <img
                 src="{{ url_for('static', filename='images/carousel/img1.png') }}"
                 alt="Преподаватель 1"
-                class="w-full h-[620px] object-cover rounded-2xl"
+                class="w-full h-[620px] md:h-[620px] object-cover rounded-2xl"
               >
             </div>
             <div class="w-full flex-shrink-0">
@@ -951,7 +951,7 @@
           </template>
         </div>
       </div>
-      <p class="text-[0.7rem] md:text-lg text-body max-w-5xl mx-auto mt-10 md:mt-16">
+      <p class="text-[0.8rem] md:text-lg text-body max-w-5xl mx-auto mt-10 md:mt-16">
           Твой успех — наш следующий отзыв. Присоединяйся к нашим выпускникам и сдай ЕГЭ на высокий балл!
       </p>
 
@@ -1122,7 +1122,7 @@ function carousel(){
 
         </div>
       </div>
-                  <div class="md:hidden text-[0.3rem] text-link mt-4">
+                  <div class="md:hidden text-[0.4rem] text-link mt-4">
           © 2026 Smart school. Все права защищены. Разработано by DanSivet
 
         </div>
