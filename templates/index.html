@@ -392,9 +392,9 @@
   })
 </script>
 
-<section id="tutors" class="py-20 md:py-6 px-4 font-main scroll-mt-20">
+<section class="py-20 md:py-6 px-4 font-main scroll-mt-20">
   <div class="max-w-[90vw] mx-auto">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#tutors')">
+    <h2 id="tutors" class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#tutors')">
       Наши преподаватели
     </h2>
 
@@ -567,7 +567,7 @@
     </div>
 
     <!-- Мобильная карусель -->
-<div class="md:hidden relative -mb-12 md:mb-0 font-main2 rounded-xl">
+<div class=" md:hidden relative -mb-12 md:mb-0 font-main2 border border-gray-200 rounded-xl">
   <!-- Общий контейнер -->
   <div
     x-data="{
@@ -583,7 +583,7 @@
   >
     <!-- Статичная панель с табами -->
     <div class="mb-4">
-      <div class="font-main2 rounded-xl shadow-sm overflow-hidden border border-gray-400">
+      <div class="font1 rounded-xl shadow-sm overflow-hidden border border-gray-400">
         <!-- Фон панели — НЕТ градиента, только чистый белый -->
         <div class="p-3">
           <div class="flex justify-center relative">
@@ -601,8 +601,8 @@
                 @click="setActive(index)"
                 class="relative z-10 px-4 py-2 font-semibold text-sm transition-all duration-300"
                 :class="activeSubject === index
-                  ? 'text-white scale-105'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200'"
+                  ? 'base-text rounded-xl font-main2  scale-105'
+                  : 'link-text2 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200'"
               >
                 <span x-text="name"></span>
               </button>
@@ -614,7 +614,7 @@
 
     <!-- Карусель (без заголовков) -->
     <div
-      class="flex transition-transform duration-500 ease-in-out"
+      class=" flex transition-transform duration-500 ease-in-out"
       :style="`transform: translateX(-${activeSubject * 100}%)`"
     >
       <!-- Математика -->
