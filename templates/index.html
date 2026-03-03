@@ -146,7 +146,7 @@
     </section>
 
     <section class="font-main md:py-6 px-4">
-  <div id="why" class="max-w-[80vw] mx-auto scroll-mt-20">
+  <div id="why" class="max-w-[90vw] mx-auto scroll-mt-20">
 
     <!-- Заголовок -->
     <span class="block font-main2 shadow-sm py-3 section-title text-center cursor-pointer" onclick="smoothScrollTo('#why')">
@@ -154,7 +154,7 @@
     </span>
 
     <!-- Блок 1: О школе -->
-    <div class="mb-8">
+    <div class="max-w-[80vw] mx-auto mb-8">
       <h3 class="heading-block">Первая онлайн-школа в Иркутске</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Наша школа не только поможет вам сдать экзамены на высокие баллы, но и подтянуть школьную программу. Именно мы, квалифицированные и молодые специалисты, найдём самый креативный подход к каждому ученику. С нами вы начнёте не просто учить шаблоны, а <span class="font-medium text-gray-900 dark:text-gray-400">понимать сам предмет</span>.
@@ -162,7 +162,7 @@
     </div>
 
     <!-- Блок 2: Методика -->
-    <div class="mb-8">
+    <div class="max-w-[80vw] mx-auto  mb-8">
       <h3 class="heading-block">Собственная методика обучения</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Наши преподаватели подготовили авторские методики, которые помогают:
@@ -179,7 +179,7 @@
     </div>
 
     <!-- Блок 3: Статистика -->
-    <div class="mb-12">
+    <div class="max-w-[80vw] mx-auto  mb-12">
       <h3 class="heading-block">Наши результаты</h3>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
   <div class="bg-cards p-4 rounded-lg text-center">
@@ -194,14 +194,14 @@
     <div class="text-xl md:text-2xl font-bold base-text">500+</div>
     <div class="text-sm md:text-base text-gray-700 dark:text-gray-400 mt-1">учеников повысили свою успеваемость</div>
   </div>
-  <div class="bg-cards p-4 rounded-lg text-center">
+  <div class="md:hidden bg-cards p-4 rounded-lg text-center">
     <div class="text-xl md:text-2xl font-bold base-text">1200+</div>
     <div class="text-sm md:text-base text-gray-700 dark:text-gray-400 mt-1">учеников обратились к нам, и не пожалели!</div>
   </div>
 </div>    </div>
 
     <!-- Блок 4: Форматы обучения -->
-    <div class="mb-16 md:mb-8">
+    <div class="max-w-[80vw] mx-auto  mb-16 md:mb-8">
       <h3 class="heading-block">Форматы обучения</h3>
       <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
         Обучение проходит в <span class="font-medium">онлайн-формате</span>.
@@ -215,50 +215,54 @@
 </section>
 
 
-    <section id="pluses" class="py-6 px-4 font-main scroll-mt-20">
-  <div class="max-w-[80vw] mx-auto">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
+    <section class="py-6 px-4 font-main scroll-mt-20">
+  <div class="max-w-[90vw] mx-auto">
+    <h2 id="pluses" class=" block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] cursor-pointer" onclick="smoothScrollTo('#pluses')">Наши преимущества</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:mt-24">
-      <!-- Карточка 1 -->
-      <div class="feature-card text-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-blue-600" ...></svg>
-        </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Индивидуальность</h3>
-        <p class="text-body ">Каждому ученику <span class="font-medium">персональный</span> план обучения с учётом его целей и уровня. </p>
-      </div>
-
-      <!-- Блок 1 -->
-      <div class="feature-card text-center">
-        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-blue-600" ...></svg>
-        </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Вовлеченность</h3>
-        <p class="text-body ">Нам важно не просто дать материал, а помочь ученикам <span class="font-medium">усвоить</span> его.</p>
-      </div>
-
-      <!-- Карточка 2 -->
-      <div class="text-center feature-card ">
-        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-green-600" ...></svg>
-        </div>
-        <h3 class="text-xl font-semibold base-text mb-2">Живой диалог</h3>
-        <p class="text-body">Онлайн созвоны, быстрый ответ в чате по вопросам, мы <span class="font-medium">всегда на связи</span>.</p>
-      </div>
-
-      <!-- Карточка 3 -->
-      <div class="text-center feature-card ">
-        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-purple-600" ...></svg>
-        </div>
-        <h3 class="text-xl font-semibold base-text md:mb-2">Проверка заданий</h3>
-        <p class="text-body">По желанию можем давать <span class="font-medium">дополнительные задания</span> на дом и проверять их.</p>
-      </div>
-
-
+<div class="max-w-[80vw] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:mt-24">  <!-- Карточка 1 -->
+  <div class="feature-card text-center">
+    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
     </div>
+    <h3 class="text-xl font-semibold base-text mb-2">Индивидуальность</h3>
+    <p class="text-body ">Каждому ученику <span class="font-medium">персональный</span> план обучения с учётом его целей и уровня. </p>
   </div>
+
+  <!-- Блок 1 -->
+  <div class="feature-card text-center">
+    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.49 9.354c-.782-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold base-text mb-2">Вовлеченность</h3>
+    <p class="text-body ">Нам важно не просто дать материал, а помочь ученикам <span class="font-medium">усвоить</span> его.</p>
+  </div>
+
+  <!-- Карточка 2 -->
+  <div class="text-center feature-card ">
+    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="1 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 0 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h10M 8V6a2 0 0 012-2h2a2 0 0 0 2v2"/>
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold base-text mb-2">Живой диалог</h3>
+    <p class="text-body">Онлайн созвоны, быстрый ответ в чате по вопросам, мы <span class="font-medium">всегда на связи</span>.</p>
+  </div>
+
+  <!-- Карточка 3 -->
+  <div class="text-center feature-card ">
+    <div class="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold base-text md:mb-2">Проверка заданий</h3>
+    <p class="text-body">По желанию можем давать <span class="font-medium">дополнительные задания</span> на дом и проверять их.</p>
+  </div>
+</div>  </div>
 </section>
 
 
@@ -267,7 +271,7 @@
 
     <!-- Мобильная версия: аккордеон -->
     <div class="max-w-[90vw] mx-auto pt-20 md:pt-12 md:mb-6">
-    <h2 class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] md:mb-24 md:mt-6">Как проходит обучение?</h2>
+    <h2 id="plan" class="block font-main2 shadow-sm py-3 section-title text-center md:mb-[10vh] md:mb-24 md:mt-6 " onclick="smoothScrollTo('#plan')">Как проходит обучение?</h2>
 
     <!-- Мобильная версия: аккордеон -->
     <div
@@ -280,7 +284,7 @@
           { title: 'Поддержка учеников', text: 'Поддерживаем наших учеников вплоть до получения результатов. И, наконец, вместе радуемся Вашим успехам!' }
         ]
       }"
-      class="md:hidden space-y-4"
+      class="max-w-[80vw] mx-auto md:hidden space-y-4"
     >
       <template x-for="(step, index) in steps" :key="index">
         <div class="font-main2 rounded-2xl shadow-sm overflow-hidden ">
@@ -567,7 +571,7 @@
     </div>
 
     <!-- Мобильная карусель -->
-<div class=" md:hidden relative -mb-12 md:mb-0 font-main2 border border-gray-200 rounded-xl">
+<div class="w-[80vw] h-[80vh] mx-auto md:hidden relative -mt-4 -mb-12 md:mb-0 font-main2 border border-gray-200 rounded-xl overflow-visible">
   <!-- Общий контейнер -->
   <div
     x-data="{
@@ -583,7 +587,7 @@
   >
     <!-- Статичная панель с табами -->
     <div class="mb-4">
-      <div class="font1 rounded-xl shadow-sm overflow-hidden border border-gray-400">
+      <div class=" font1 rounded-xl shadow-sm overflow-hidden border border-gray-400">
         <!-- Фон панели — НЕТ градиента, только чистый белый -->
         <div class="p-3">
           <div class="flex justify-center relative">
@@ -602,7 +606,7 @@
                 class="relative z-10 px-4 py-2 font-semibold text-sm transition-all duration-300"
                 :class="activeSubject === index
                   ? 'base-text rounded-xl font-main2  scale-105'
-                  : 'link-text2 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200'"
+                  : 'link-text2 text-xs dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200'"
               >
                 <span x-text="name"></span>
               </button>
@@ -794,11 +798,11 @@
      style="background: linear-gradient(to bottom, var(--color-bg-font-main), var(--color-bg-font-main2));">
 </div>
     <!-- Блок "Запись на консультацию" -->
-    <section id="contact" class="py-8 md:py-12 px-4 font-main2 scroll-mt-20">
+    <section class="py-8 md:py-12 px-4 font-main2 scroll-mt-20">
   <div class="max-w-[90vw] min-h-[75vh] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
     <!-- Левая часть: форма -->
     <div>
-      <h2 class="section-title text-left mb-6 cursor-pointer" onclick="smoothScrollTo('#contact')">
+      <h2 id="contact" class="section-title text-left mb-6 cursor-pointer" onclick="smoothScrollTo('#contact')">
         Начать обучение — легко!
       </h2>
       <p class="text-md md:text-lg text-gray-600 dark:text-gray-300 mb-16">
@@ -1010,7 +1014,7 @@
                 </div>
                 <div class="flex gap-1 mb-3">
                   <template x-for="i in 5" :key="i">
-                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class=" w-5 h-5 text-yellow-300" fill="CurrentColor" viewBox="0 0 20 20" stroke="gray">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.95-.69l1.07-3.292z"/>
                     </svg>
                   </template>
@@ -1151,7 +1155,7 @@ function carousel(){
       <!-- Навигация: mobile = right column (text-right); md+ = центр (md:-ml-24) как у тебя было -->
       <div class="flex flex-col gap-1 md:gap-2 text-right md:text-left md:-ml-24">
         <a href="#why" class="text-link mt-4 md:mt-0 text-sm md:text-1xl" onclick="smoothScrollTo('#why'); return false;">О нас</a>
-        <a href="#pluses" class="text-link text-sm md:text-1xl" onclick="smoothScrollTo('#pluses'); return false;">План обучения</a>
+        <a href="#pluses" class="text-link text-sm md:text-1xl" onclick="smoothScrollTo('#plan'); return false;">План обучения</a>
         <a href="#tutors" class="text-link text-sm md:text-1xl" onclick="smoothScrollTo('#tutors'); return false;">Преподаватели</a>
       </div>
 

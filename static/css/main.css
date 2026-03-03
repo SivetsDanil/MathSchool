@@ -752,6 +752,10 @@ html, body {
   pointer-events: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .static {
   position: static;
 }
@@ -831,6 +835,21 @@ html, body {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.-mx-10 {
+  margin-left: -2.5rem;
+  margin-right: -2.5rem;
+}
+
+.-mx-\[5vw\] {
+  margin-left: -5vw;
+  margin-right: -5vw;
 }
 
 .-mb-1 {
@@ -945,6 +964,10 @@ html, body {
   margin-top: 10vh;
 }
 
+.-mb-20 {
+  margin-bottom: -5rem;
+}
+
 .block {
   display: block;
 }
@@ -1015,6 +1038,14 @@ html, body {
 
 .h-full {
   height: 100%;
+}
+
+.h-9 {
+  height: 2.25rem;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
 }
 
 .max-h-0 {
@@ -1097,6 +1128,26 @@ html, body {
   width: 100%;
 }
 
+.w-9 {
+  width: 2.25rem;
+}
+
+.w-\[80vw\] {
+  width: 80vw;
+}
+
+.w-\[90vw\] {
+  width: 90vw;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
 .min-w-\[120px\] {
   min-width: 120px;
 }
@@ -1127,6 +1178,10 @@ html, body {
 
 .max-w-\[60vw\] {
   max-width: 60vw;
+}
+
+.max-w-\[70vw\] {
+  max-width: 70vw;
 }
 
 .flex-1 {
@@ -1187,6 +1242,14 @@ html, body {
 
 .scroll-mt-20 {
   scroll-margin-top: 5rem;
+}
+
+.scroll-mt-10 {
+  scroll-margin-top: 2.5rem;
+}
+
+.scroll-mt-40 {
+  scroll-margin-top: 10rem;
 }
 
 .list-disc {
@@ -1289,6 +1352,10 @@ html, body {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .rounded {
@@ -1421,6 +1488,26 @@ html, body {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.bg-amber-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 243 199 / var(--tw-bg-opacity, 1));
+}
+
+.bg-emerald-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 250 229 / var(--tw-bg-opacity, 1));
+}
+
+.bg-violet-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 233 254 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1509,6 +1596,16 @@ html, body {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .pb-6 {
@@ -1729,6 +1826,41 @@ html, body {
 .text-yellow-400 {
   --tw-text-opacity: 1;
   color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-600 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity, 1));
+}
+
+.text-emerald-600 {
+  --tw-text-opacity: 1;
+  color: rgb(5 150 105 / var(--tw-text-opacity, 1));
+}
+
+.text-violet-600 {
+  --tw-text-opacity: 1;
+  color: rgb(124 58 237 / var(--tw-text-opacity, 1));
+}
+
+.text-yellow-800 {
+  --tw-text-opacity: 1;
+  color: rgb(133 77 14 / var(--tw-text-opacity, 1));
+}
+
+.text-yellow-600 {
+  --tw-text-opacity: 1;
+  color: rgb(202 138 4 / var(--tw-text-opacity, 1));
+}
+
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity, 1));
+}
+
+.text-yellow-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 224 71 / var(--tw-text-opacity, 1));
 }
 
 .underline {
