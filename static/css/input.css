@@ -6,7 +6,8 @@
   --color-bg-font1: #1A3D2E; /* bg-gray-100 */
   --color-bg-font-main2: #AAF0D1; /* #DDEEBB */
   --color-bg-font-main: #F1FFD3;
-  --color-btn-hover: #AAF0D1;
+  --color-btn-hover1: #AAF0D1;
+  --color-btn-hover2: #3A5700;
   --color-link-text: #add55c;
 }
 
@@ -17,7 +18,9 @@
   --color-bg-font1: #1A3D2E; /* bg-gray-100 */
   --color-bg-font-main2: #AAF0D1; /* #DDEEBB */
   --color-bg-font-main: #E5D5B5;
-  --color-btn-hover: #92C923;
+  --color-btn-hover1: #92C923;
+    --color-btn-hover2: #3A5700;
+
   --color-link-text: #add55c;
 }
 
@@ -62,10 +65,10 @@ html, body {
   }
 
   .btn-primary {
-    @apply inline-block font1 hover:btn-hover text-white font-medium px-4 md:px-8 py-3 md:py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
+    @apply inline-block font1 hover:btn-hover1 text-white font-medium px-4 md:px-8 py-3 md:py-3.5 rounded-lg shadow-sm hover:shadow transition-all duration-200;
   }
   .btn-navbar {
-    @apply font-main hover:btn-hover text-black rounded-lg transition-colors;
+    @apply font-main hover:btn-hover1 text-black rounded-lg transition-colors;
   }
   .bg-cards{
   @apply font-block p-5 rounded-lg shadow-sm text-center border border-gray-100 dark:border-gray-800;
@@ -106,8 +109,11 @@ html, body {
   .font-block {
     background-color: var(--color-bg-block);
   }
-  .btn-hover {
-    background-color: var(--color-btn-hover);
+  .btn-hover1 {
+    background-color: var(--color-btn-hover1);
+  }
+  .btn-hover2 {
+    background-color: var(--color-btn-hover2);
   }
   .logo-text {
     color: var(--color-bg-font-main);

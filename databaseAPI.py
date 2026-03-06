@@ -1,103 +1,45 @@
-import sqlite3
 import os
-from typing import List, Dict, Optional
+import json
+from typing import List, Dict
+from openpyxl import load_workbook
 
-
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tutors.db')
-
-
-def init_db():
-    """Создаёт базу данных по шаблону из словаря"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    # Создаём таблицу преподавателей
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS tutors (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            subject TEXT NOT NULL,
-            degree TEXT NOT NULL,
-            experience TEXT NOT NULL,
-            bio TEXT NOT NULL,
-            tags TEXT NOT NULL  -- хранится как JSON-строка
-        )
-    ''')
-
-    # Проверяем, есть ли уже данные
-    cursor.execute('SELECT COUNT(*) FROM tutors')
-    if cursor.fetchone()[0] == 0:
-        # Вставляем начальные данные (как в твоём словаре)
-        initial_data = [
-            # Математика
-            ('Великий математик', 'math', 'КФУ, бакалавриат филологии', '7 лет',
-             'Окончил бакалавриат мехмат СПБГУ с красным дипломом. Математик.',
-             '["ЕГЭ", "СПбГУ", "опыт 7 лет"]'),
-            ('Алексей Смирнов', 'math', 'МФТИ, кандидат наук', '12 лет',
-             'Преподаю математику с 2012 года. Автор 3 курсов по олимпиадной математике.',
-             '["МФТИ", "олимпиады", "12 лет"]'),
-
-            # Информатика
-            ('Иван Петров', 'it', 'ВШЭ, магистратура', '5 лет',
-             'Разработчик и преподаватель. Создал курс «Python для школьников» с нуля.',
-             '["ВШЭ", "Python", "5 лет"]'),
-
-            # Физика
-            ('Отец физики', 'physics', 'МГУ, кандидат наук', '9 лет',
-             'Преподаю физику с 2015 года. Лучший Репетитор по физике на 90+ баллов',
-             '["МГУ", "ЕГЭ", "9 лет"]')
-        ]
-
-        cursor.executemany('''
-            INSERT INTO tutors (name, subject, degree, experience, bio, tags)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', initial_data)
-
-    conn.commit()
-    conn.close()
-
-
-def add_tutor(name: str, subject: str, degree: str, experience: str, bio: str, tags: List[str]):
-    """Добавляет нового преподавателя"""
-    import json
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute('''
-        INSERT INTO tutors (name, subject, degree, experience, bio, tags)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ''', (name, subject, degree, experience, bio, json.dumps(tags)))
-
-    conn.commit()
-    conn.close()
-
-
-def delete_tutor_by_name(name: str):
-    """Удаляет преподавателя по имени"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute('DELETE FROM tutors WHERE name = ?', (name,))
-
-    conn.commit()
-    conn.close()
-
+# Путь к Excel-файлу
+EXCEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tutors.xlsx')
 
 def get_tutors_by_subject(subject: str) -> List[Dict]:
-    """Возвращает список преподавателей по предмету"""
-    import json
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row  # чтобы получать словари
-    cursor = conn.cursor()
+    """Читает преподавателей из Excel-файла по предмету"""
+    if not os.path.exists(EXCEL_PATH):
+        return []
 
-    cursor.execute('SELECT * FROM tutors WHERE subject = ?', (subject,))
-    rows = cursor.fetchall()
+    try:
+        wb = load_workbook(EXCEL_PATH, read_only=True)
+        ws = wb.active
 
-    tutors = []
-    for row in rows:
-        tutor = dict(row)
-        tutor['tags'] = json.loads(tutor['tags'])  # преобразуем строку обратно в список
-        tutors.append(tutor)
+        # Читаем заголовки (первая строка)
+        headers = [cell.value for cell in ws[1]]
 
-    conn.close()
-    return tutors
+        tutors = []
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            # Преобразуем строку в словарь
+            tutor = dict(zip(headers, row))
+
+            # Парсим tags: если это строка вида '["tag1", "tag2"]' → json.loads
+            # Если заказчик будет писать через запятую → замени на: [t.strip() for t in tutor['tags'].split(',')]
+            try:
+                if isinstance(tutor.get('tags'), str):
+                    tutor['tags'] = json.loads(tutor['tags'])
+                else:
+                    tutor['tags'] = []
+            except (json.JSONDecodeError, TypeError):
+                tutor['tags'] = []
+
+            # Фильтруем по предмету
+            if subject == '' or tutor.get('subject') == subject:
+                tutors.append(tutor)
+
+        wb.close()
+        return tutors
+
+    except Exception as e:
+        print(f"Ошибка при чтении Excel: {e}")
+        return []

@@ -5,7 +5,7 @@ from api import indexAPI
 import os
 from flask import Flask, request, jsonify
 from flask import send_from_directory
-from databaseAPI import get_tutors_by_subject, init_db
+from databaseAPI import get_tutors_by_subject
 from flask_login import current_user
 import hashlib
 import time
@@ -20,7 +20,6 @@ LICENSE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stati
 login_manager = LoginManager()
 login_manager.init_app(application)
 
-init_db()
 
 
 
@@ -65,6 +64,21 @@ def get_tutors():
 @application.route("/")
 def index():
     return render_template('index.html')
+
+
+@application.route('/form', methods=['POST'])
+def handle_form():
+    try:
+        data = request.get_json()
+        print("Новая заявка:")
+        print(f"  Имя: {data.get('name')}")
+        print(f"  Телефон: {data.get('phone')}")
+        print(f"  Email: {data.get('email')}")
+        print("-" * 40)
+        return jsonify({"status": "success"}), 200
+    except Exception as e:
+        print("Ошибка формы:", e)
+        return jsonify({"status": "error"}), 500
 
 
 def main():
