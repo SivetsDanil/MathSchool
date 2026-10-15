@@ -923,21 +923,21 @@
           <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${active * 100}%)`">
             <div class="w-full flex-shrink-0">
               <img
-                src="images/carousel/img1.png"
+                src="static/images/carousel/img1.png"
                 alt="Преподаватель 1"
                 class="w-full h-[620px] md:h-[620px] object-cover rounded-2xl"
               >
             </div>
             <div class="w-full flex-shrink-0">
               <img
-                src="images/carousel/img2.png"
+                src="static/images/carousel/img2.png"
                 alt="Преподаватель 2"
                 class="w-full h-[620px] object-cover rounded-2xl"
               >
             </div>
             <div class="w-full flex-shrink-0">
               <img
-                src="images/carousel/img3.png"
+                src="static/images/carousel/img3.png"
                 alt="Преподаватель 3"
                 class="w-full h-[620px] object-cover rounded-2xl"
               >
@@ -1335,7 +1335,7 @@ form.addEventListener('submit', async function(e) {
   // Если всё валидно — отправляем на сервер
   if (isValid) {
     try {
-      const response = await fetch('https://tutors-api.ТВОЙ-НИК.workers.dev/', {
+      const response = await fetch('https://tutors-api.sivets-one.workers.dev/', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
