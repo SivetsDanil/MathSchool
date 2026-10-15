@@ -6,6 +6,7 @@ import os
 from flask import Flask, request, jsonify
 from flask import send_from_directory
 from databaseAPI import get_tutors_by_subject
+from botAPI import *
 from flask_login import current_user
 import hashlib
 import time
@@ -70,12 +71,19 @@ def index():
 def handle_form():
     try:
         data = request.get_json()
-        print("Новая заявка:")
-        print(f"  Имя: {data.get('name')}")
-        print(f"  Телефон: {data.get('phone')}")
-        print(f"  Email: {data.get('email')}")
-        print("-" * 40)
+        name = data.get('name', '—')
+        phone = data.get('phone', '—')
+        email = data.get('email', '—')
+        message = (
+            "<b>🔔 Новая заявка на консультацию!</b>\n\n"
+            f"<b>Имя:</b> {name}\n"
+            f"<b>Телефон:</b> {phone}\n"
+            f"<b>Email:</b> {email}"
+        )
+        send_telegram_message(message)
+
         return jsonify({"status": "success"}), 200
+
     except Exception as e:
         print("Ошибка формы:", e)
         return jsonify({"status": "error"}), 500
