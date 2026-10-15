@@ -797,8 +797,7 @@
       </div>
     </div>
   </div>
-</div></section>
-
+</div>
     <!-- Блок "Запись на консультацию" -->
     <section class="py-8 md:py-12 px-4 font-main scroll-mt-20">
   <div class="max-w-[90vw] min-h-[75vh] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -1259,11 +1258,25 @@ function carousel(){
 <script>
 let ALL_TUTORS = [];
 
-fetch('content/tutors.json')
+window.TUTORS_READY = fetch('content/tutors.json')
   .then(r => r.json())
   .then(data => {
-    ALL_TUTORS = data;
-    console.log('Загружено преподавателей:', ALL_TUTORS.length);
+    ALL_TUTORS = data.map(t => {
+      let tags = t.tags;
+
+      // Если tags приехала строкой — превращаем в массив
+      if (typeof tags === 'string') {
+        try {
+          tags = JSON.parse(tags);            // случай '["ЕГЭ", "ОГЭ"]'
+        } catch (e) {
+          tags = tags.split(',').map(s => s.trim()).filter(Boolean); // случай 'ЕГЭ, ОГЭ'
+        }
+      }
+      if (!Array.isArray(tags)) tags = [];
+
+      return Object.assign({}, t, { tags: tags });
+    });
+    console.log('Преподаватели загружены:', ALL_TUTORS.length);
   })
   .catch(err => console.error('Ошибка загрузки tutors.json:', err));
 
