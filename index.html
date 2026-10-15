@@ -410,18 +410,17 @@
             active: 0,
             teachers: [],
             async init() {
-              const res = await getTutorsBySubject('math');
-              this.teachers = await res.json();
+              this.teachers = getTutorsBySubject('math');
             }
           }" class="relative">
             <div class="relative mb-4">
               <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
                 <img
-                  x-show="teachers.length > 0"
-                  :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                  alt="Преподаватель"
-                  class="w-full h-full object-cover"
-                >
+  x-show="teachers.length > 0 && teachers[active]"
+  :src="`static/images/tutors/tutor-${(teachers[active] || {}).id || 0}.jpg`"
+  alt="Преподаватель"
+  class="w-full h-full object-cover"
+>
               </div>
               <button
                 x-show="teachers.length > 1"
@@ -465,18 +464,17 @@
             active: 0,
             teachers: [],
             async init() {
-              const res = await getTutorsBySubject('it');
-              this.teachers = await res.json();
+              this.teachers = getTutorsBySubject('it');
             }
           }" class="relative">
             <div class="relative mb-4">
               <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
                 <img
-                  x-show="teachers.length > 0"
-                  :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                  alt="Преподаватель"
-                  class="w-full h-full object-cover"
-                >
+  x-show="teachers.length > 0 && teachers[active]"
+  :src="`static/images/tutors/tutor-${(teachers[active] || {}).id || 0}.jpg`"
+  alt="Преподаватель"
+  class="w-full h-full object-cover"
+>
               </div>
               <button
                 x-show="teachers.length > 1"
@@ -520,18 +518,17 @@
             active: 0,
             teachers: [],
             async init() {
-              const res = await getTutorsBySubject('physics');
-              this.teachers = await res.json();
+              this.teachers = getTutorsBySubject('physics');
             }
           }" class="relative">
             <div class="relative mb-4">
               <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
                 <img
-                  x-show="teachers.length > 0"
-                  :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                  alt="Преподаватель"
-                  class="w-full h-full object-cover"
-                >
+  x-show="teachers.length > 0 && teachers[active]"
+  :src="`static/images/tutors/tutor-${(teachers[active] || {}).id || 0}.jpg`"
+  alt="Преподаватель"
+  class="w-full h-full object-cover"
+>
               </div>
               <button
                 x-show="teachers.length > 1"
@@ -570,7 +567,6 @@
 
     <!-- Мобильная карусель -->
 <div class="w-[80vw] mx-auto md:hidden relative -mt-4 -mb-12 md:mb-0 font-main2 border border-gray-200 rounded-xl overflow-visible">
-  <!-- Общий контейнер -->
   <div
     x-data="{
       activeSubject: 0,
@@ -583,13 +579,11 @@
     }"
     class="overflow-hidden"
   >
-    <!-- Статичная панель с табами -->
+    <!-- Табы -->
     <div class="mb-4">
-      <div class=" font1 rounded-xl shadow-sm overflow-hidden border border-gray-400">
-        <!-- Фон панели — НЕТ градиента, только чистый белый -->
+      <div class="font1 rounded-xl shadow-sm overflow-hidden border border-gray-400">
         <div class="p-3">
           <div class="flex justify-center relative">
-            <!-- ЦВЕТНОЙ ОВАЛ (теперь ВИДЕН) -->
             <div
               class="absolute rounded-full transition-transform duration-500 ease-in-out"
               :class="subjectColors[activeSubject]"
@@ -597,14 +591,13 @@
               style="width: calc(33.33% - 0.5rem); height: 40px; left: 0.25rem; z-index: 1;"
             ></div>
 
-            <!-- Табы поверх овала -->
             <template x-for="(name, index) in subjectNames" :key="index">
               <button
                 @click="setActive(index)"
                 class="relative z-10 px-3.5 py-2 font-semibold text-sm transition-all duration-300"
                 :class="activeSubject === index
-                  ? 'base-text text-sm rounded-xl font-main2  scale-105'
-                  : 'link-text2 text-xs  hover:text-gray-800 dark:hover:text-gray-200'"
+                  ? 'base-text text-sm rounded-xl font-main2 scale-105'
+                  : 'link-text2 text-xs hover:text-gray-800 dark:hover:text-gray-200'"
               >
                 <span x-text="name"></span>
               </button>
@@ -614,33 +607,38 @@
       </div>
     </div>
 
-    <!-- Карусель (без заголовков) -->
+    <!-- Карусель -->
     <div
-      class=" flex transition-transform duration-500 ease-in-out"
+      class="flex transition-transform duration-500 ease-in-out"
       :style="`transform: translateX(-${activeSubject * 100}%)`"
     >
       <!-- Математика -->
       <div class="w-full flex-shrink-0 px-2">
-        <div class="font-main2 rounded-xl shadow-sm overflow-hidden ">
+        <div class="font-main2 rounded-xl shadow-sm overflow-hidden">
           <div class="p-6">
-            <!-- Контент без заголовка -->
             <div x-data="{
               active: 0,
               teachers: [],
-              async init() {
-                const res = await getTutorsBySubject('math');
-                this.teachers = await res.json();
+              init() {
+                this.teachers = getTutorsBySubject('math');
               }
             }" class="relative">
               <div class="relative mb-4">
-                <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
-                  <img
-                    x-show="teachers.length > 0"
-                    :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                    alt="Преподаватель"
-                    class="w-full h-full object-cover"
-                  >
-                </div>
+                <!-- Картинка только когда данные есть -->
+                <template x-if="teachers.length > 0 && teachers[active]">
+                  <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                    <img
+                      :src="`static/images/tutors/tutor-${teachers[active].id}.jpg`"
+                      alt="Преподаватель"
+                      class="w-full h-full object-cover"
+                    >
+                  </div>
+                </template>
+                <template x-if="teachers.length === 0">
+                  <div class="aspect-[4/4] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+                    <span class="text-gray-400">Загрузка...</span>
+                  </div>
+                </template>
                 <button
                   x-show="teachers.length > 1"
                   @click="active = (active - 1 + teachers.length) % teachers.length"
@@ -654,7 +652,7 @@
                   aria-label="Следующий преподаватель"
                 >→</button>
               </div>
-              <template x-if="teachers.length > 0">
+              <template x-if="teachers.length > 0 && teachers[active]">
                 <div>
                   <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
                   <div class="flex flex-wrap gap-2 mt-2">
@@ -665,7 +663,7 @@
                     </template>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
-                  <a :href="`/tutor/${teachers[active].id}`" class="mt-4 btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
+                  <a href="#tutors" class="mt-4 inline-block btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
                 </div>
               </template>
               <template x-if="teachers.length === 0">
@@ -683,20 +681,25 @@
             <div x-data="{
               active: 0,
               teachers: [],
-              async init() {
-                const res = await getTutorsBySubject('it');
-                this.teachers = await res.json();
+              init() {
+                this.teachers = getTutorsBySubject('it');
               }
             }" class="relative">
               <div class="relative mb-4">
-                <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
-                  <img
-                    x-show="teachers.length > 0"
-                    :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                    alt="Преподаватель"
-                    class="w-full h-full object-cover"
-                  >
-                </div>
+                <template x-if="teachers.length > 0 && teachers[active]">
+                  <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                    <img
+                      :src="`static/images/tutors/tutor-${teachers[active].id}.jpg`"
+                      alt="Преподаватель"
+                      class="w-full h-full object-cover"
+                    >
+                  </div>
+                </template>
+                <template x-if="teachers.length === 0">
+                  <div class="aspect-[4/4] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+                    <span class="text-gray-400">Загрузка...</span>
+                  </div>
+                </template>
                 <button
                   x-show="teachers.length > 1"
                   @click="active = (active - 1 + teachers.length) % teachers.length"
@@ -710,7 +713,7 @@
                   aria-label="Следующий преподаватель"
                 >→</button>
               </div>
-              <template x-if="teachers.length > 0">
+              <template x-if="teachers.length > 0 && teachers[active]">
                 <div>
                   <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
                   <div class="flex flex-wrap gap-2 mt-2">
@@ -721,7 +724,7 @@
                     </template>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
-                  <a :href="`/tutor/${teachers[active].id}`" class="mt-4 btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
+                  <a href="#tutors" class="mt-4 inline-block btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
                 </div>
               </template>
               <template x-if="teachers.length === 0">
@@ -739,20 +742,25 @@
             <div x-data="{
               active: 0,
               teachers: [],
-              async init() {
-                const res = await getTutorsBySubject('physics');
-                this.teachers = await res.json();
+              init() {
+                this.teachers = getTutorsBySubject('physics');
               }
             }" class="relative">
               <div class="relative mb-4">
-                <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
-                  <img
-                    x-show="teachers.length > 0"
-                    :src="`/static/images/tutors/tutor-${teachers[active].id}.jpg`"
-                    alt="Преподаватель"
-                    class="w-full h-full object-cover"
-                  >
-                </div>
+                <template x-if="teachers.length > 0 && teachers[active]">
+                  <div class="aspect-[4/4] bg-gray-200 rounded-lg overflow-hidden">
+                    <img
+                      :src="`static/images/tutors/tutor-${teachers[active].id}.jpg`"
+                      alt="Преподаватель"
+                      class="w-full h-full object-cover"
+                    >
+                  </div>
+                </template>
+                <template x-if="teachers.length === 0">
+                  <div class="aspect-[4/4] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+                    <span class="text-gray-400">Загрузка...</span>
+                  </div>
+                </template>
                 <button
                   x-show="teachers.length > 1"
                   @click="active = (active - 1 + teachers.length) % teachers.length"
@@ -766,7 +774,7 @@
                   aria-label="Следующий преподаватель"
                 >→</button>
               </div>
-              <template x-if="teachers.length > 0">
+              <template x-if="teachers.length > 0 && teachers[active]">
                 <div>
                   <h4 class="text-lg font-bold text-gray-900 dark:text-white" x-text="teachers[active].name"></h4>
                   <div class="flex flex-wrap gap-2 mt-2">
@@ -777,7 +785,7 @@
                     </template>
                   </div>
                   <p class="text-gray-600 dark:text-gray-300 text-sm mt-3" x-text="teachers[active].bio"></p>
-                  <a :href="`/tutor/${teachers[active].id}`" class="mt-4 btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
+                  <a href="#tutors" class="mt-4 inline-block btn-primary text-white hover:btn-hover2 px-4 py-2 rounded-lg text-sm">Подробнее</a>
                 </div>
               </template>
               <template x-if="teachers.length === 0">
@@ -789,8 +797,7 @@
       </div>
     </div>
   </div>
-</div> </div>
-</section>
+</div></section>
 
     <!-- Блок "Запись на консультацию" -->
     <section class="py-8 md:py-12 px-4 font-main scroll-mt-20">
@@ -1053,7 +1060,8 @@
     </div>
   </div>
 </section>
-
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <!-- Alpine component (place before </body> or in a script block) -->
 <script>
 function carousel(){
@@ -1249,17 +1257,16 @@ function carousel(){
   </div>
 </footer>
 <script>
-  // Загружаем ВСЕХ преподавателей один раз из JSON
 let ALL_TUTORS = [];
 
 fetch('content/tutors.json')
   .then(r => r.json())
   .then(data => {
     ALL_TUTORS = data;
-    renderTutors(''); // ← имя твоей функции первичной отрисовки
-  });
+    console.log('Загружено преподавателей:', ALL_TUTORS.length);
+  })
+  .catch(err => console.error('Ошибка загрузки tutors.json:', err));
 
-// Замена твоей get_tutors_by_subject, но теперь в браузере
 function getTutorsBySubject(subject) {
   if (!subject) return ALL_TUTORS;
   return ALL_TUTORS.filter(t => t.subject === subject);
