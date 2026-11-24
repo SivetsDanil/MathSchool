@@ -10,8 +10,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Спект.online</title>
   <link rel="stylesheet" href="static/css/main.css?v=6">
-  <script defer src="static/js/alpine.js"></script>
-  <script defer src="static/js/alpine-collapse.js"></script>
 </head>
   <!-- Навбар -->
   <header class="font1 shadow-navbar fixed top-0 left-0 right-0 z-50 ">
@@ -397,13 +395,6 @@
 
     <!-- Десктопная версия: 4 колонки -->
 </section>
-
-<!-- Alpine.js plugin для плавного скрытия/показа -->
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.plugin(AlpineCollapse)
-  })
-</script>
 
 <section class="py-20 md:py-6 px-4 font-main scroll-mt-20">
   <div class="max-w-[90vw]  mx-auto">
@@ -1070,8 +1061,8 @@
     </div>
   </div>
 </section>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <!-- Alpine component (place before </body> or in a script block) -->
 <script>
 function carousel(){
